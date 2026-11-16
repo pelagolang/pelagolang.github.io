@@ -49,11 +49,43 @@ inf nan
 
 The `0.1 + 0.2` line shows the usual binary rounding: at 128 bits it is still not exactly `0.3`, just closer.
 
+## Parsing, patterns and JSON
+
+`str.parseFloat16()`, `parseFloat128()` and `parseFloat256()` read decimal text exactly (correctly rounded) and return a result. `switch` patterns work on these types.
+
+```pelago
+fn name(x: float128) -> string {
+    switch x {
+        case 0.0: return "zero"
+        case 1.5: return "one and a half"
+        default: return "other"
+    }
+}
+
+fn main() {
+    print(name(0.0))
+    print(name(1.5))
+    print(name(2.0))
+    print("2.5".parseFloat16())
+    print("1e5000".parseFloat256())
+    print("x".parseFloat128())
+}
+```
+
+```text
+zero
+one and a half
+other
+ok(2.5)
+ok(1e+5000)
+err(not a number)
+```
+
+With `@derive(toJson)` they are written as JSON text, like the [wide integers](./wide-integers.md#json): the shortest text that reads back to the same value, with `"inf"`, `"-inf"` and `"nan"` for the special values. `fromJson` reads that text, and also a plain JSON number. The example on the wide-integers page includes a `float128` field.
+
 ## What is not there yet
 
 - **Maths functions.** There is no `sqrt`, `floor` or other function for these types, and no fused multiply-add.
-- **Statements.** `switch` patterns and `for` ranges over them are not built.
-- **JSON.** They are not part of `@derive(toJson)` and `fromJson`.
 - **Speed.** Everything is plain loops, correct first. `%` with a huge gap between the exponents is slow. The same speed list as for [wide integers](./wide-integers.md) applies.
 
 The routines were checked against exact rational arithmetic: 750 random cases for `float128` (add, subtract, multiply, divide and remainder, bit for bit), 400 for `float16` and 12 for `float256`, plus literals at all three formats.

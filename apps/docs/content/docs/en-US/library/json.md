@@ -94,6 +94,8 @@ a:80 tls=false note=none origin=1,-2
 error 1:23: $.port: 70000 does not fit in uint16 (0 to 65535)
 ```
 
+Wide integers (`int128`, `uint128`, `int256`, `uint256`) and the soft floats (`float16`, `float128`, `float256`) are written as JSON strings so that no precision is lost; see [wide integers](./wide-integers.md#json).
+
 The rules:
 
 - Numbers are exact. An integer field reads an integer and stops with an error when the number does not fit the type, so a `uint16` never wraps.

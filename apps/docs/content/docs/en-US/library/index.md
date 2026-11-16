@@ -19,6 +19,9 @@ The library has two parts.
 | [`std.random`](./random.md) | Random numbers: from the system, or from a seeded generator you can replay. |
 | [`std.hash`](./hash.md) | The streaming hash interface, hex helpers and a constant-time compare. |
 | [`std.sha2`](./sha2.md) | SHA-224, SHA-256, SHA-384, SHA-512 and the SHA-512/t variants. |
+| [`std.sha3`](./sha3.md) | SHA-3, SHAKE and the original Keccak. |
+| [`std.legacy`](./legacy.md) | MD5 and SHA-1, for old formats only. They are broken. |
+| [`std.checksum`](./checksum.md) | CRC-8 to CRC-64 and Adler-32. |
 | [`std.mac`](./mac.md) | HMAC over any hash. |
 | [`std.kdf`](./kdf.md) | HKDF and PBKDF2 key derivation. |
 | [`std.os`](./os.md) | The process: arguments and exit status. |
