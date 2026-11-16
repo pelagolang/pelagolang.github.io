@@ -44,4 +44,4 @@ Always check a tag with `verify` (or `hash.equalConstTime`), never with `==`.
 
 ## What is not there yet
 
-Only HMAC. Poly1305, CMAC, GMAC and KMAC are planned.
+`std.mac` itself has only HMAC. Some hashes have a keyed mode built in, so they need no HMAC: [KMAC](./sha3.md#cshake-and-kmac), keyed [BLAKE2](./blake2.md) and keyed [BLAKE3](./blake3.md). Poly1305, CMAC and GMAC are planned.

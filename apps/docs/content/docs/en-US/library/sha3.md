@@ -46,6 +46,37 @@ fn main() {
 
 Only `^`, `&`, `~` and rotations touch the data, with no table lookup or branch that depends on it, so the time does not depend on what is hashed. Every digest is checked against Python's `hashlib`.
 
+## cSHAKE and KMAC
+
+From NIST SP 800-185.
+
+- `keccak.cshake(strength, size, name, custom)` is SHAKE with a function name and a customisation string, so the same input gives unrelated outputs in different uses. With an empty `name` and `custom` it is plain SHAKE.
+- `keccak.kmac(strength, size, key, custom)` is a keyed MAC with a key of any length. `size` is part of the result: a different size gives an unrelated tag.
+- `keccak.kmacXof(strength, size, key, custom)` is the same, but the length is not mixed in, so `squeeze(n)` gives a stream where a shorter output is the start of a longer one.
+
+```pelago
+import std.hash
+import std.sha3
+import { keccak } = std.sha3
+
+fn main() {
+    const key = "secret".bytes().toList()
+    var k = keccak.kmac(256, 32, key, "my app".bytes().toList())
+    k.update!("message".bytes().toList())
+    print(hash.hex(k.finish()))
+    var c = keccak.cshake(128, 16, [], "my app".bytes().toList())
+    c.update!("message".bytes().toList())
+    print(hash.hex(c.finish()))
+}
+```
+
+```text
+1ae2bd0a7bba4a5a5e113e5dd432ed53f6f5a5f0c55f1c8c34df668958c738a2
+6c584ed226bf0a8290fc647ea2016572
+```
+
+Both match the NIST sample values.
+
 ## What is not there yet
 
-cSHAKE, KMAC, TupleHash, ParallelHash (SP 800-185) and KangarooTwelve.
+TupleHash, ParallelHash and KangarooTwelve.
