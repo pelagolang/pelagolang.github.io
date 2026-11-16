@@ -55,4 +55,4 @@ cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc23
 
 ## What is not there yet
 
-Only SHA-2 exists so far. SHA-3, BLAKE2, BLAKE3, MD5 and SHA-1, checksums and fast non-cryptographic hashes are planned, and so are extendable-output functions; see [std.sha2](./sha2.md) for what is built. There is no password hashing beyond PBKDF2 yet (see [std.kdf](./kdf.md)).
+Built so far: [SHA-2](./sha2.md), [SHA-3, Keccak and SHAKE](./sha3.md), the broken [MD5 and SHA-1](./legacy.md) for old formats, and [CRC and Adler-32](./checksum.md). BLAKE2, BLAKE3 and fast non-cryptographic hashes are planned. There is no password hashing beyond PBKDF2 yet (see [std.kdf](./kdf.md)).

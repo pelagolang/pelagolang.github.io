@@ -88,9 +88,75 @@ max
 
 A wide integer is a value of 2 or 4 64-bit words, least significant first, in two's complement. Addition, subtraction, the bit operations and comparisons are chains of 64-bit operations; multiplication, division, shifts and printing are library routines that loop over the words. One code path serves every width, and the interpreter, x86-64 and AArch64 all run it. The checks are the same as for `int`, and a stop is reported on the line of the arithmetic.
 
+## Ranges and patterns
+
+`for` over a range and `switch` with literal and range patterns work on the wide integers as they do on `int`.
+
+```pelago
+fn size(n: uint128) -> string {
+    switch n {
+        case 0: return "zero"
+        case 1..=9: return "small"
+        default: return "big"
+    }
+}
+
+fn main() {
+    print(size(0))
+    print(size(7))
+    print(size(1000000000000000000000))
+    var sum: uint128 = 0
+    for i of 1..=5 {
+        sum += i
+    }
+    print(sum)
+}
+```
+
+```text
+zero
+small
+big
+15
+```
+
+## JSON
+
+With `@derive(toJson)` and `@derive(fromJson)` (see [std.json](./json.md)), a wide integer is written as a JSON **string** of digits, because most JSON tools read numbers as 64-bit floats and would round a big one. Reading accepts the string, and also a plain JSON number when it fits `int`. A value outside the type's range is an error, never a wrap.
+
+```pelago
+import std.json
+
+@derive(fromJson, toJson)
+struct ledger { id: uint128, balance: int256, rate: float128 }
+
+fn main() {
+    const l = ledger { id: 340282366920938463463374607431768211455, balance: -5, rate: 0.5 }
+    const text = ledgerEncode(l)
+    print(text)
+    switch ledgerDecode(text) {
+        case ok(b): print("#(b.id) #(b.balance) #(b.rate)")
+        case err(e): print("error #e")
+    }
+    switch ledgerDecode("{\"id\": 7, \"balance\": \"-12\", \"rate\": 2.5}") {
+        case ok(b): print("#(b.id) #(b.balance) #(b.rate)")
+        case err(e): print("error #e")
+    }
+    switch ledgerDecode("{\"id\": \"340282366920938463463374607431768211456\", \"balance\": \"1\", \"rate\": \"inf\"}") {
+        case ok(_): print("unexpected")
+        case err(e): print("error #e")
+    }
+}
+```
+
+```text
+{"id":"340282366920938463463374607431768211455","balance":"-5","rate":"0.5"}
+340282366920938463463374607431768211455 -5 0.5
+7 -12 2.5
+error 1:8: $.id: "340282366920938463463374607431768211456" is not a whole number that fits in uint128 (0 to 340282366920938463463374607431768211455)
+```
+
 ## What is not there yet
 
 - **Speed.** Correctness came first. Division is a shift-and-subtract loop, multiplication and shifts are calls, and printing is slow for large values. These are on the optimisation list and will get faster without changing results.
-- **Ranges and patterns.** `for` over a range of wide integers (`for i of 1..=30` with a `uint128`) stops the build with "not lowered yet", so use a `while` loop as above. Pattern literals in `switch` are not built either.
-- **JSON.** Wide integers are not yet part of `@derive(toJson)` and `fromJson`.
 - **Floats.** `float` printing stops at the 64-bit range. The wider and narrower floats are on [their own page](./wide-floats.md).
