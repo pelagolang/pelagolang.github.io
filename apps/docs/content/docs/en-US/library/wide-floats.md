@@ -83,9 +83,43 @@ err(not a number)
 
 With `@derive(toJson)` they are written as JSON text, like the [wide integers](./wide-integers.md#json): the shortest text that reads back to the same value, with `"inf"`, `"-inf"` and `"nan"` for the special values. `fromJson` reads that text, and also a plain JSON number. The example on the wide-integers page includes a `float128` field.
 
+## Functions
+
+Both families have methods with the same names as the ones on `float` and `int`.
+
+- **Soft floats:** `sqrt` (correctly rounded), `floor`, `ceil`, `trunc`, `round` (halves away from zero, like `float`), `abs`, `min` and `max`.
+- **Wide integers:** `abs` (signed types), `min`, `max` and `pow`. Like every other operation, `pow` stops the program on overflow.
+
+```pelago
+fn main() {
+    const x: float128 = 2.0
+    print(x.sqrt())
+    const y: float128 = -2.5
+    print(y.floor(), y.ceil(), y.trunc(), y.round(), y.abs())
+    print(x.min(y), x.max(y))
+    const h: float16 = 2.0
+    print(h.sqrt())
+    const a: int128 = -7
+    const b: uint256 = 3
+    print(a.abs(), a.min(5), a.max(5))
+    print(b.pow(100))
+    print(b.pow(2))
+}
+```
+
+```text
+1.414213562373095048801688724209698
+-3 -2 -2 -3 2.5
+-2.5 2
+1.414
+7 -7 5
+515377520732011331036461129765621272702107522001
+9
+```
+
 ## What is not there yet
 
-- **Maths functions.** There is no `sqrt`, `floor` or other function for these types, and no fused multiply-add.
+- **More maths.** `pow` with a float exponent, `exp`, `log`, the trigonometric functions and a fused multiply-add are not built.
 - **Speed.** Everything is plain loops, correct first. `%` with a huge gap between the exponents is slow. The same speed list as for [wide integers](./wide-integers.md) applies.
 
 The routines were checked against exact rational arithmetic: 750 random cases for `float128` (add, subtract, multiply, divide and remainder, bit for bit), 400 for `float16` and 12 for `float256`, plus literals at all three formats.

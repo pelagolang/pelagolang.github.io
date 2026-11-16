@@ -156,6 +156,40 @@ fn main() {
 error 1:8: $.id: "340282366920938463463374607431768211456" is not a whole number that fits in uint128 (0 to 340282366920938463463374607431768211455)
 ```
 
+## Functions
+
+Both families have methods with the same names as the ones on `float` and `int`.
+
+- **Soft floats:** `sqrt` (correctly rounded), `floor`, `ceil`, `trunc`, `round` (halves away from zero, like `float`), `abs`, `min` and `max`.
+- **Wide integers:** `abs` (signed types), `min`, `max` and `pow`. Like every other operation, `pow` stops the program on overflow.
+
+```pelago
+fn main() {
+    const x: float128 = 2.0
+    print(x.sqrt())
+    const y: float128 = -2.5
+    print(y.floor(), y.ceil(), y.trunc(), y.round(), y.abs())
+    print(x.min(y), x.max(y))
+    const h: float16 = 2.0
+    print(h.sqrt())
+    const a: int128 = -7
+    const b: uint256 = 3
+    print(a.abs(), a.min(5), a.max(5))
+    print(b.pow(100))
+    print(b.pow(2))
+}
+```
+
+```text
+1.414213562373095048801688724209698
+-3 -2 -2 -3 2.5
+-2.5 2
+1.414
+7 -7 5
+515377520732011331036461129765621272702107522001
+9
+```
+
 ## What is not there yet
 
 - **Speed.** Correctness came first. Division is a shift-and-subtract loop, multiplication and shifts are calls, and printing is slow for large values. These are on the optimisation list and will get faster without changing results.
