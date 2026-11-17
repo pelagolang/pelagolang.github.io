@@ -1,0 +1,8 @@
+{
+  "title": "Random numbers",
+  "pages": [
+    "index",
+    "random",
+    "csprng"
+  ]
+}

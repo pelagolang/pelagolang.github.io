@@ -4,8 +4,10 @@
     "index",
     "hashes",
     "crypto",
+    "ciphers",
     "io",
     "time",
+    "random",
     "system",
     "data",
     "math"

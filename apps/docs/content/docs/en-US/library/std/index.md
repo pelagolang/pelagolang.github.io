@@ -27,7 +27,26 @@ Message authentication and key derivation. [Group overview](./crypto/index.md).
 | Module | Purpose |
 | --- | --- |
 | [`std.mac`](./crypto/mac.md) | HMAC over any hash. |
+| [`std.poly1305`](./crypto/poly1305.md) | The Poly1305 one-time MAC. |
 | [`std.kdf`](./crypto/kdf.md) | HKDF and PBKDF2 key derivation. |
+
+## Ciphers and AEAD
+
+Encryption, and authenticated encryption for messages. [Group overview](./ciphers/index.md).
+
+| Module | Purpose |
+| --- | --- |
+| [`std.chacha`](./ciphers/chacha.md) | ChaCha20 and XChaCha20 stream ciphers. |
+| [`std.aead`](./ciphers/aead.md) | ChaCha20-Poly1305 and XChaCha20-Poly1305 authenticated encryption. |
+
+## Random numbers
+
+Replayable generators for tests and games, and secure generators for secrets. [Group overview](./random/index.md).
+
+| Module | Purpose |
+| --- | --- |
+| [`std.random`](./random/random.md) | Random numbers: from the system, or from a seeded generator you can replay. |
+| [`std.csprng`](./random/csprng.md) | A fast cryptographically secure generator for keys, nonces and tokens. |
 
 ## Input, output and files
 
@@ -49,13 +68,12 @@ Clocks, durations and sleeping. [Group overview](./time/index.md).
 
 ## System
 
-The process and its surroundings, and random numbers. [Group overview](./system/index.md).
+The process and its surroundings. [Group overview](./system/index.md).
 
 | Module | Purpose |
 | --- | --- |
 | [`std.os`](./system/os.md) | The process: arguments and exit status. |
 | [`std.env`](./system/env.md) | Environment variables. |
-| [`std.random`](./system/random.md) | Random numbers: from the system, or from a seeded generator you can replay. |
 
 ## Text and data formats
 

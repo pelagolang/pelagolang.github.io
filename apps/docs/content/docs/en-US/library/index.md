@@ -11,8 +11,10 @@ The library has two parts.
 
 - [Hashes and checksums](./std/hashes/index.md): Streaming hashes behind one interface: secure, fast and legacy.
 - [Keys and MACs](./std/crypto/index.md): Message authentication and key derivation.
+- [Ciphers and AEAD](./std/ciphers/index.md): Encryption, and authenticated encryption for messages.
+- [Random numbers](./std/random/index.md): Replayable generators for tests and games, and secure generators for secrets.
 - [Input, output and files](./std/io/index.md): Standard streams, files and paths.
 - [Time](./std/time/index.md): Clocks, durations and sleeping.
-- [System](./std/system/index.md): The process and its surroundings, and random numbers.
+- [System](./std/system/index.md): The process and its surroundings.
 - [Text and data formats](./std/data/index.md): Parsing and writing text formats, and pattern matching.
 - [Math](./std/math/index.md): Numbers beyond the built-in types.

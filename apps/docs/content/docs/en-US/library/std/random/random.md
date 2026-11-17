@@ -52,3 +52,5 @@ true
 ```
 
 Use a seeded `rng` for tests, simulations and games that must replay, and write the seed down. Use the system's generator when you want a different result every run.
+
+For keys, nonces, tokens and salts that need many numbers, [std.csprng](./csprng.md) is a secure generator that is cheap to call.

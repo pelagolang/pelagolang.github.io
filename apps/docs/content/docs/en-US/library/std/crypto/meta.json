@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "mac",
+    "poly1305",
     "kdf"
   ],
   "defaultOpen": false
