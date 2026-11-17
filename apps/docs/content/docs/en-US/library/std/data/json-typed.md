@@ -146,9 +146,48 @@ lax: 10
 error 1:15: $.a: duplicate field "a"
 ```
 
+## Map fields
+
+A field of type `map<string, V>` is a JSON object whose members all have type `V`. Writing keeps the map's insertion order, and reading builds the map in the order the members appear (a repeated key keeps the last value). A member of the wrong type is an error with its path, and so is a value that is not an object. A map whose keys are not `string` gives an error; other key types are not supported yet.
+
+```pelago
+import std.json
+import { json_error } = std.json
+
+@derive(fromJson, toJson)
+struct scene {
+    name: string
+    scores: map<string, int>
+}
+
+fn main() {
+    switch sceneDecode("{\"name\": \"s\", \"scores\": {\"b\": 2, \"a\": 1}}") {
+        case ok(s):
+            print(s.scores.len(), s.scores.get("a"))
+            print(sceneEncode(s))
+        case err(e): print("error #e")
+    }
+    switch sceneDecode("{\"name\": \"s\", \"scores\": {\"a\": \"one\"}}") {
+        case ok(s): print(s.scores.len())
+        case err(e): print("error #e")
+    }
+    switch sceneDecode("{\"name\": \"s\", \"scores\": [1]}") {
+        case ok(s): print(s.scores.len())
+        case err(e): print("error #e")
+    }
+}
+```
+
+```text
+2 some(1)
+{"name":"s","scores":{"b":2,"a":1}}
+error 1:31: $.scores.a: expected a whole number, found text
+error 1:25: $.scores: expected an object, found an array
+```
+
 ## What is not there yet
 
-- Map fields (`map<string, V>`) in the encoder and decoder.
+- Maps with keys other than `string`.
 - Renaming enum variants.
 - Generic types.
 - Pretty printing.
