@@ -62,11 +62,12 @@ Standard streams, files and paths. [Group overview](./io/index.md).
 
 ## Time
 
-Clocks, durations and sleeping. [Group overview](./time/index.md).
+Clocks, durations, sleeping and the calendar. [Group overview](./time/index.md).
 
 | Module | Purpose |
 | --- | --- |
 | [`std.time`](./time/time.md) | Clocks, durations and sleeping. |
+| [`std.calendar`](./time/calendar.md) | Dates, times of day and date-times with no zone. |
 
 ## System
 
