@@ -3,8 +3,7 @@
   "pages": [
     "index",
     "os",
-    "env",
-    "random"
+    "env"
   ],
   "defaultOpen": false
 }
