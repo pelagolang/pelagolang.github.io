@@ -30,21 +30,21 @@ import { fnv, siphash, xxh64 } = std.fasthash
 fn main() {
     var x = xxh64.new(0)
     x.update!("Nobody inspects the spammish repetition".bytes().toList())
-    print(hash.hex(x.finish()))
+    print(hash.hex(x.finish()), x.value())
     var f = fnv.fnv1a64()
     f.update!("hello".bytes().toList())
-    print(hash.hex(f.finish()))
+    print(hash.hex(f.finish()), f.value())
     const key = hash.fromHex("000102030405060708090a0b0c0d0e0f") ?? []
     var s = siphash.new24(key)
     s.update!("hello".bytes().toList())
-    print(hash.hex(s.finish()))
+    print(hash.hex(s.finish()), s.value())
 }
 ```
 
 ```text
-fbcea83c8a378bf1
-a430d84680aabd0b
-81df675798b34f00
+fbcea83c8a378bf1 18144624926692707313
+a430d84680aabd0b 11831194018420276491
+81df675798b34f00 22433990042967937
 ```
 
 Checked against the published values and a Python port of each specification.
