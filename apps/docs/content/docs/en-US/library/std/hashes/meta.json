@@ -1,0 +1,15 @@
+{
+  "title": "Hashes and checksums",
+  "pages": [
+    "index",
+    "hash",
+    "sha2",
+    "sha3",
+    "blake2",
+    "blake3",
+    "fasthash",
+    "legacy",
+    "checksum"
+  ],
+  "defaultOpen": true
+}

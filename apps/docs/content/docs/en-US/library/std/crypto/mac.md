@@ -7,7 +7,7 @@ description: HMAC over any hasher.
 import std.mac
 ```
 
-HMAC (RFC 2104, FIPS 198-1) works over any [`hasher`](./hash.md). Pass a new hasher of the kind you want, for example `sha256.new()`. A key longer than the hash's block is hashed first, and a shorter one is zero padded, as the standard says. It is checked against the RFC 4231 vectors and Python's `hmac`.
+HMAC (RFC 2104, FIPS 198-1) works over any [`hasher`](../hashes/hash.md). Pass a new hasher of the kind you want, for example `sha256.new()`. A key longer than the hash's block is hashed first, and a shorter one is zero padded, as the standard says. It is checked against the RFC 4231 vectors and Python's `hmac`.
 
 | Function | Result | Notes |
 | --- | --- | --- |
@@ -44,4 +44,4 @@ Always check a tag with `verify` (or `hash.equalConstTime`), never with `==`.
 
 ## What is not there yet
 
-`std.mac` itself has only HMAC. Some hashes have a keyed mode built in, so they need no HMAC: [KMAC](./sha3.md#cshake-and-kmac), keyed [BLAKE2](./blake2.md) and keyed [BLAKE3](./blake3.md). Poly1305, CMAC and GMAC are planned.
+`std.mac` itself has only HMAC. Some hashes have a keyed mode built in, so they need no HMAC: [KMAC](../hashes/sha3.md#cshake-and-kmac), keyed [BLAKE2](../hashes/blake2.md) and keyed [BLAKE3](../hashes/blake3.md). Poly1305, CMAC and GMAC are planned.

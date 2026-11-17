@@ -36,6 +36,6 @@ fn main() {
 a9993e364706816aba3e25717850c26c9cd0d89d
 ```
 
-As a keyed MAC, HMAC-MD5 and HMAC-SHA1 are still unbroken, which is why they work with [std.mac](./mac.md). Digests are checked against Python's `hashlib`.
+As a keyed MAC, HMAC-MD5 and HMAC-SHA1 are still unbroken, which is why they work with [std.mac](../crypto/mac.md). Digests are checked against Python's `hashlib`.
 
 MD4 and MD2 are planned.

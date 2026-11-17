@@ -7,7 +7,7 @@ description: Key derivation with HKDF and PBKDF2, over any hasher.
 import std.kdf
 ```
 
-Both functions run over HMAC with any [`hasher`](./hash.md).
+Both functions run over HMAC with any [`hasher`](../hashes/hash.md).
 
 **HKDF** (RFC 5869) turns one secret that is already random, such as a key-exchange result, into any number of keys, one per `info` value. **PBKDF2** (RFC 8018) turns a password into a key by repeating the HMAC `iterations` times. PBKDF2 is old and cheap to attack on GPUs, so Argon2 is planned for new password storage; use PBKDF2 where a standard asks for it.
 

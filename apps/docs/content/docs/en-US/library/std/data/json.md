@@ -94,13 +94,13 @@ a:80 tls=false note=none origin=1,-2
 error 1:23: $.port: 70000 does not fit in uint16 (0 to 65535)
 ```
 
-Wide integers (`int128`, `uint128`, `int256`, `uint256`) and the soft floats (`float16`, `float128`, `float256`) are written as JSON strings so that no precision is lost; see [wide integers](./wide-integers.md#json).
+Wide integers (`int128`, `uint128`, `int256`, `uint256`) and the soft floats (`float16`, `float128`, `float256`) are written as JSON strings so that no precision is lost; see [wide integers](../../core/wide-integers.md#json).
 
 The rules:
 
 - Numbers are exact. An integer field reads an integer and stops with an error when the number does not fit the type, so a `uint16` never wraps.
 - A field with a default may be missing. An optional field (`T?`) may be missing or `null`. An unknown field in the input is ignored.
-- Lists, nested structs, tuples and fixed-size arrays work as fields. A [braid](../guide/braids.mdx) is one flat array.
+- Lists, nested structs, tuples and fixed-size arrays work as fields. A [braid](../../../guide/braids.mdx) is one flat array.
 - An enum with no payloads is a string (`"blue"`). A case with a payload is an object with one key, the case name: `{"circle": {"radius": 2}}`.
 - An error says where: line and column in the text, then the path in the value, such as `$.tags[1]: expected text, found an integer` or `$.origin: missing field "y"`.
 - What `toJson` writes, `fromJson` reads back to the same value.
