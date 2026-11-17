@@ -41,6 +41,7 @@ jobs:
       - run: node apps/docs/scripts/check-std-coverage.mjs
         env:
           PELAGO_SRC: ${{ github.workspace }}/pelago
+          PELAGO: ${{ github.workspace }}/pelago/target/release/pelago
 
   # The Fumadocs app in apps/docs is its own project (its own package.json and lockfile).
   docs:

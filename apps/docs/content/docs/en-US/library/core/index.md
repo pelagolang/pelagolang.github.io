@@ -12,3 +12,4 @@ These come with the language. Their methods come with the types, so nothing is i
 - [Wide integers](./wide-integers.md)
 - [Wide and narrow floats](./wide-floats.md)
 - [Options and results](./options-and-results.md)
+- [Math](./math.md)
