@@ -8,6 +8,7 @@
     "numbers",
     "wide-integers",
     "wide-floats",
-    "options-and-results"
+    "options-and-results",
+    "math"
   ]
 }
