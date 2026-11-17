@@ -1,10 +1,12 @@
 {
-  "title": "Keys and MACs",
+  "title": "Keys, MACs and passwords",
   "pages": [
     "index",
     "mac",
     "poly1305",
-    "kdf"
+    "kdf",
+    "password",
+    "bcrypt"
   ],
   "defaultOpen": false
 }

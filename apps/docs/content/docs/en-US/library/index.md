@@ -10,7 +10,7 @@ The library has two parts.
 **[`std`](./std/index.md)** is a set of modules you import when you need them. They are grouped by purpose:
 
 - [Hashes and checksums](./std/hashes/index.md): Streaming hashes behind one interface: secure, fast and legacy.
-- [Keys and MACs](./std/crypto/index.md): Message authentication and key derivation.
+- [Keys, MACs and passwords](./std/crypto/index.md): Message authentication and key derivation.
 - [Ciphers and AEAD](./std/ciphers/index.md): Encryption, and authenticated encryption for messages.
 - [Random numbers](./std/random/index.md): Replayable generators for tests and games, and secure generators for secrets.
 - [Input, output and files](./std/io/index.md): Standard streams, files and paths.
