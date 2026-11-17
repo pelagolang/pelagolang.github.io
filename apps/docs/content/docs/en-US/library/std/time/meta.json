@@ -2,7 +2,8 @@
   "title": "Time",
   "pages": [
     "index",
-    "time"
+    "time",
+    "calendar"
   ],
   "defaultOpen": false
 }

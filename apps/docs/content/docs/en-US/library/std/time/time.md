@@ -19,7 +19,7 @@ A `duration` is whole nanoseconds in an `int` (about 292 years either way). Arit
 
 | Function | Result | Notes |
 | --- | --- | --- |
-| `time.days(n)`, `time.hours(n)`, `time.minutes(n)`, `time.seconds(n)` | `duration` | A day is exactly 24 hours. Calendar days, which can be 23 or 25 hours long in a zone, come with the calendar. |
+| `time.days(n)`, `time.hours(n)`, `time.minutes(n)`, `time.seconds(n)` | `duration` | A day is exactly 24 hours. Calendar days, which can be 23 or 25 hours long in a zone, come with time zones. |
 | `time.millis(n)`, `time.micros(n)`, `time.nanos(n)` | `duration` | |
 | `time.fromSeconds(s)` | `duration ! time_error` | From a `float` with a fraction; an error for NaN, infinity or a value out of range. |
 | `time.zero()`, `time.longest()`, `time.shortest()` | `duration` | |
@@ -187,7 +187,7 @@ The clocks work on Linux (x86-64 and AArch64), Windows (x86-64 and ARM64) and ma
 
 ## What is not there yet
 
-- **Dates and calendars.** A `moment` is seconds since 1970, and nothing yet turns it into a year, month or day. The calendar (`std.calendar`), time zones (`std.zone`) and text forms (`std.timefmt`) are planned, with the calendar next.
+- **Zones and text forms.** A `moment` becomes a UTC date and time with [`std.calendar`](./calendar.md). Time zones (`std.zone`) and text forms (`std.timefmt`) are planned.
 - **Operators for scaling.** `d * 2` and `d / 2` are compile errors, because `duration` does not provide `mul` or `div`. Use `d.times(2)` and `d.divInt(2)`.
 - **Instants.** An `instant` has `==`, `<` and the rest, but no `print` and no `-`. Use `a.since(b)`.
 - **Timers and deadlines.** There is no timer or ticker type. For a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
