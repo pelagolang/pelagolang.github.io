@@ -122,7 +122,7 @@ big
 
 ## JSON
 
-With `@derive(toJson)` and `@derive(fromJson)` (see [std.json](./json.md)), a wide integer is written as a JSON **string** of digits, because most JSON tools read numbers as 64-bit floats and would round a big one. Reading accepts the string, and also a plain JSON number when it fits `int`. A value outside the type's range is an error, never a wrap.
+With `@derive(toJson)` and `@derive(fromJson)` (see [std.json](../std/data/json.md)), a wide integer is written as a JSON **string** of digits, because most JSON tools read numbers as 64-bit floats and would round a big one. Reading accepts the string, and also a plain JSON number when it fits `int`. A value outside the type's range is an error, never a wrap.
 
 ```pelago
 import std.json

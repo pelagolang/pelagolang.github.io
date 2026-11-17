@@ -38,4 +38,4 @@ ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
 cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc2358baeca134c825a7
 ```
 
-Keyed use is in [std.mac](./mac.md) and key derivation in [std.kdf](./kdf.md).
+Keyed use is in [std.mac](../crypto/mac.md) and key derivation in [std.kdf](../crypto/kdf.md).

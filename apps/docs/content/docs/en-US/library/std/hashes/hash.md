@@ -55,4 +55,4 @@ cb00753f45a35e8bb5a03d699ac65007272c32ab0eded1631a8b605a43ff5bed8086072ba1e7cc23
 
 ## What is not there yet
 
-Built so far: [SHA-2](./sha2.md), [SHA-3, Keccak and SHAKE](./sha3.md), the broken [MD5 and SHA-1](./legacy.md) for old formats, and [CRC and Adler-32](./checksum.md). [BLAKE2](./blake2.md) and [BLAKE3](./blake3.md), which are fast and secure, and the non-secure [FNV, xxHash and SipHash](./fasthash.md) for hash tables. Poly1305 and Argon2 are planned. There is no password hashing beyond PBKDF2 yet (see [std.kdf](./kdf.md)).
+Built so far: [SHA-2](./sha2.md), [SHA-3, Keccak and SHAKE](./sha3.md), the broken [MD5 and SHA-1](./legacy.md) for old formats, and [CRC and Adler-32](./checksum.md). [BLAKE2](./blake2.md) and [BLAKE3](./blake3.md), which are fast and secure, and the non-secure [FNV, xxHash and SipHash](./fasthash.md) for hash tables. Poly1305 and Argon2 are planned. There is no password hashing beyond PBKDF2 yet (see [std.kdf](../crypto/kdf.md)).

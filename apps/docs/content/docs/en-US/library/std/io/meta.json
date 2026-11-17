@@ -1,0 +1,10 @@
+{
+  "title": "Input, output and files",
+  "pages": [
+    "index",
+    "io",
+    "fs",
+    "path"
+  ],
+  "defaultOpen": false
+}

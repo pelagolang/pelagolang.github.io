@@ -1,0 +1,13 @@
+{
+  "title": "std",
+  "pages": [
+    "index",
+    "hashes",
+    "crypto",
+    "io",
+    "time",
+    "system",
+    "data",
+    "math"
+  ]
+}

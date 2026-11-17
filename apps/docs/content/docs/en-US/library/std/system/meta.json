@@ -1,0 +1,10 @@
+{
+  "title": "System",
+  "pages": [
+    "index",
+    "os",
+    "env",
+    "random"
+  ],
+  "defaultOpen": false
+}

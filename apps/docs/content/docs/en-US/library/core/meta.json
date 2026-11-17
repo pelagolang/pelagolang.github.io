@@ -1,0 +1,13 @@
+{
+  "title": "Core types",
+  "pages": [
+    "index",
+    "lists",
+    "maps-and-sets",
+    "strings",
+    "numbers",
+    "wide-integers",
+    "wide-floats",
+    "options-and-results"
+  ]
+}
