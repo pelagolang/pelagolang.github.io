@@ -44,4 +44,4 @@ One iteration is only for the example. For real password storage pick an iterati
 
 ## What is not there yet
 
-Argon2, scrypt and bcrypt, and the PHC string format, are planned.
+Argon2, scrypt and bcrypt are in [std.password](./password.md) and [std.bcrypt](./bcrypt.md).

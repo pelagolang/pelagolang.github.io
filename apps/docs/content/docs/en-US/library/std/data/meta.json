@@ -3,6 +3,7 @@
   "pages": [
     "index",
     "json",
+    "json-typed",
     "regex"
   ],
   "defaultOpen": false

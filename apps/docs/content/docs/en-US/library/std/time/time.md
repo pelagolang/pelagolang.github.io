@@ -7,25 +7,134 @@ description: Clocks, durations and sleeping.
 import std.time
 ```
 
-A `duration` is a length of time that carries its unit, so there is no bare `int` that might mean seconds or milliseconds. It is whole nanoseconds in an `int` (about 292 years either way), and arithmetic on it stops the program on overflow like any other integer arithmetic.
+Three kinds of value, never mixed by accident:
+
+- a **`duration`**, a length of time that carries its unit, so there is no bare `int` that might mean seconds or milliseconds;
+- an **`instant`**, a point on the monotonic clock, where only differences mean anything (use it to measure);
+- a **`moment`**, a point on the UTC timeline from the wall clock (use it to say when).
+
+A `duration` is whole nanoseconds in an `int` (about 292 years either way). Arithmetic on it stops the program on overflow like any other integer arithmetic; where a caller can run out of range there are `checked...` (an `option`) and `saturating...` forms. A `moment` is seconds and nanoseconds, so it reaches billions of years either way. A clock can fail with an `io_error` where the system refuses.
+
+## Durations
 
 | Function | Result | Notes |
 | --- | --- | --- |
-| `time.seconds(n)`, `time.millis(n)`, `time.micros(n)`, `time.nanos(n)` | `duration` | Make a duration. |
-| `time.now()` | `instant ! io_error` | A point on the monotonic clock. Only the difference between two of them means anything. |
-| `time.sinceEpoch()` | `duration ! io_error` | The wall clock: time since 1970-01-01 UTC. |
-| `time.sleep(d)` | | Wait for `d`. Other tasks run meanwhile. |
+| `time.days(n)`, `time.hours(n)`, `time.minutes(n)`, `time.seconds(n)` | `duration` | A day is exactly 24 hours. Calendar days, which can be 23 or 25 hours long in a zone, come with the calendar. |
+| `time.millis(n)`, `time.micros(n)`, `time.nanos(n)` | `duration` | |
+| `time.fromSeconds(s)` | `duration ! time_error` | From a `float` with a fraction; an error for NaN, infinity or a value out of range. |
+| `time.zero()`, `time.longest()`, `time.shortest()` | `duration` | |
 
 | Method | Result | Notes |
 | --- | --- | --- |
 | `asNanos()`, `asMicros()`, `asMillis()`, `asSeconds()` | `int` | The length in that unit, rounded towards zero. |
 | `asSecondsFloat()` | `float` | |
-| `abs()` | `duration` | |
-| `a + b`, `a - b`, `-a` | `duration` | Durations add and subtract. |
-| `a == b`, `a != b`, `a < b`, `a <= b`, `a > b`, `a >= b` | `bool` | Durations compare. |
+| `subsecNanos()` | `int` | The nanoseconds left after whole seconds. |
+| `abs()`, `signum()`, `isZero()`, `isNegative()` | | |
+| `max(o)`, `min(o)`, `clamp(lo, hi)` | `duration` | |
+| `a + b`, `a - b`, `-a`, `a % b` | `duration` | Stops on overflow. |
+| `times(n)`, `divInt(n)` | `duration` | Scale by a whole number. `d * 2` is not an operator; write `d.times(2)`. |
+| `ratio(o)`, `remainder(o)` | `int`, `duration` | How many whole `o` fit, and what is left. |
+| `checkedAdd(o)`, `checkedSub(o)`, `checkedMul(n)` | `duration?` | `none` when the result does not fit. |
+| `saturatingAdd(o)`, `saturatingSub(o)`, `saturatingMul(n)` | `duration` | Held at `longest` or `shortest`. |
+| comparisons | `bool` | `==`, `!=`, `<`, `<=`, `>`, `>=`. |
+
+```pelago
+import std.time
+
+fn main() {
+    print(time.days(1), time.hours(2), time.minutes(90), time.seconds(3), time.millis(250), time.micros(42), time.nanos(7))
+    print(time.days(1).asSeconds(), time.hours(1).asMillis(), time.minutes(1).asSeconds())
+    const a = time.seconds(10)
+    print(a.times(3), a.divInt(4), a % time.seconds(3), a.ratio(time.seconds(3)))
+    print(time.seconds(-5).abs(), time.seconds(-3).signum(), (-a).isNegative())
+    print(time.seconds(9).clamp(time.seconds(1), time.seconds(5)))
+    print(time.fromSeconds(1.5).or(time.zero()), time.fromSeconds(1e12).isErr())
+}
+```
+
+```text
+86400s 7200s 5400s 3s 250ms 42us 7ns
+86400 3600000 60
+30s 2.5s 1s 3
+5s -1 true
+5s
+1.5s true
+```
+
+```pelago
+import std.time
+
+fn main() {
+    const big = time.longest()
+    print(big.checkedAdd(time.nanos(1)) == none)
+    print(time.seconds(1).checkedAdd(time.seconds(2)) ?? time.zero())
+    print(big.saturatingAdd(time.seconds(1)) == time.longest())
+    print(time.days(10000).saturatingMul(1000000) == time.longest())
+    print(time.seconds(2).checkedMul(3) ?? time.zero())
+}
+```
+
+```text
+true
+3s
+true
+true
+6s
+```
+
+## Clocks and instants
+
+| Function | Result | Notes |
+| --- | --- | --- |
+| `time.now()` | `instant ! io_error` | The monotonic clock: it never goes back, whatever the date is set to. |
+| `time.sinceEpoch()` | `duration ! io_error` | The wall clock as a length since 1970-01-01 UTC. |
+| `time.sleep(d)` | | Wait for `d`. Other tasks run meanwhile. |
 | `instant.elapsed()` | `duration ! io_error` | The time since this instant. |
-| `instant.since(earlier)` | `duration` | The distance between two instants. |
-| `instant.plus(d)` | `instant` | |
+| `instant.since(earlier)` | `duration` | Negative when it is before. |
+| `instant.plus(d)`, `instant.minus(d)` | `instant` | `checkedPlus(d)` gives an option. |
+| comparisons | `bool` | Instants compare with `==`, `<` and so on. |
+
+## Moments
+
+A `moment` is whole seconds since 1970-01-01 00:00:00 UTC (negative before it) plus nanoseconds, always normalised so two moments compare by their fields. The wall clock can be set back, so use an `instant` to measure and a `moment` to say when.
+
+| Function or method | Result | Notes |
+| --- | --- | --- |
+| `time.wallNow()` | `moment ! io_error` | The wall clock now. It can jump when the date is set. |
+| `time.fromUnix(s)`, `time.fromUnixMillis(ms)` | `moment` | |
+| `time.momentOf(s, n)` | `moment?` | Seconds and nanoseconds; `n` may be any `int` and carries into the seconds. `none` when the seconds do not fit. |
+| `unixSeconds()`, `unixMillis()`, `subsecNanos()` | `int` | Seconds and milliseconds are cut towards minus infinity. |
+| `plus(d)`, `minus(d)` | `moment` | Stops when the seconds do not fit. `checkedPlus` and `checkedMinus` give an option. |
+| `since(earlier)` | `duration` | Stops when the two are more than about 292 years apart; `checkedSince` gives an option. |
+| `elapsed()` | `duration ! io_error` | How long ago this moment was on the wall clock. |
+
+A moment prints as seconds since the epoch with nine decimals. Calendar text comes with `std.timefmt`.
+
+```pelago
+import std.time
+
+fn main() {
+    const m = time.fromUnix(1700000000)
+    print(m, m.unixSeconds(), m.unixMillis())
+    const later = m.plus(time.hours(1) + time.millis(500))
+    print(later, later.since(m))
+    print(later.subsecNanos(), later > m, m.minus(time.days(1)))
+    print(time.fromUnixMillis(-1500))
+    print(time.momentOf(5, -1) ?? time.fromUnix(0))
+    print(m.checkedPlus(time.seconds(1)) != none)
+}
+```
+
+```text
+1700000000.000000000 1700000000 1700000000000
+1700003600.500000000 3600.5s
+500000000 true 1699913600.000000000
+-1.500000000
+4.999999999
+true
+```
+
+## Printing durations
 
 A duration prints with the largest unit that keeps the number readable: `1.5s`, `250ms`, `42us` or `7ns`. Milliseconds and microseconds are cut towards zero when printed (`1500ns` prints as `1us`), so use `asNanos()` when you need the exact number.
 
@@ -78,10 +187,8 @@ The clocks work on Linux (x86-64 and AArch64), Windows (x86-64 and ARM64) and ma
 
 ## What is not there yet
 
-The module is small on purpose. These are missing today, so write them yourself where you need them:
-
-- **Dates and calendars.** `time.sinceEpoch()` gives seconds since 1970 as a `duration`, and nothing turns that into a year, month or day. There is no date type, no time zones, no formatting and no parsing.
-- **Scaling a duration.** `d * 2` and `d / 2` are compile errors, because `duration` has no multiplication or division. Build the length from the number instead, for example `time.millis(n * 5)`.
-- **Instants.** An `instant` has no `<`, `==` or `print`, and no `-`. Use `a.since(b)` and compare the resulting durations. A wall-clock reading is a `duration`, not an `instant`.
+- **Dates and calendars.** A `moment` is seconds since 1970, and nothing yet turns it into a year, month or day. The calendar (`std.calendar`), time zones (`std.zone`) and text forms (`std.timefmt`) are planned, with the calendar next.
+- **Operators for scaling.** `d * 2` and `d / 2` are compile errors, because `duration` does not provide `mul` or `div`. Use `d.times(2)` and `d.divInt(2)`.
+- **Instants.** An `instant` has `==`, `<` and the rest, but no `print` and no `-`. Use `a.since(b)`.
 - **Timers and deadlines.** There is no timer or ticker type. For a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
 - **Targets.** There is no sleep call on Windows yet (sleeping there waits by checking the clock).

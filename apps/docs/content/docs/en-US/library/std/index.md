@@ -20,15 +20,17 @@ Streaming hashes behind one interface: secure, fast and legacy. [Group overview]
 | [`std.legacy`](./hashes/legacy.md) | MD5 and SHA-1, for old formats only. They are broken. |
 | [`std.checksum`](./hashes/checksum.md) | CRC-8 to CRC-64 and Adler-32. |
 
-## Keys and MACs
+## Keys, MACs and passwords
 
-Message authentication and key derivation. [Group overview](./crypto/index.md).
+Message authentication, key derivation and password hashing. [Group overview](./crypto/index.md).
 
 | Module | Purpose |
 | --- | --- |
 | [`std.mac`](./crypto/mac.md) | HMAC over any hash. |
 | [`std.poly1305`](./crypto/poly1305.md) | The Poly1305 one-time MAC. |
 | [`std.kdf`](./crypto/kdf.md) | HKDF and PBKDF2 key derivation. |
+| [`std.password`](./crypto/password.md) | Argon2 and scrypt, with PHC strings. |
+| [`std.bcrypt`](./crypto/bcrypt.md) | bcrypt `$2b$` password hashes. |
 
 ## Ciphers and AEAD
 
@@ -82,6 +84,7 @@ Parsing and writing text formats, and pattern matching. [Group overview](./data/
 | Module | Purpose |
 | --- | --- |
 | [`std.json`](./data/json.md) | Parse and write JSON. |
+| [Typed JSON](./data/json-typed.md) | Decode and encode JSON into structs and enums, with renaming and a strict mode. |
 | [`std.regex`](./data/regex.md) | Regular expressions. |
 
 ## Math
