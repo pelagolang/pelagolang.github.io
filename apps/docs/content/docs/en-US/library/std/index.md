@@ -64,12 +64,15 @@ Standard streams, files and paths. [Group overview](./io/index.md).
 
 ## Time
 
-Clocks, durations, sleeping and the calendar. [Group overview](./time/index.md).
+Clocks, timers, the calendar, time zones and text forms. [Group overview](./time/index.md).
 
 | Module | Purpose |
 | --- | --- |
 | [`std.time`](./time/time.md) | Clocks, durations and sleeping. |
 | [`std.calendar`](./time/calendar.md) | Dates, times of day and date-times with no zone. |
+| [`std.zone`](./time/zone.md) | IANA time zones, fixed offsets and POSIX rules. |
+| [`std.timefmt`](./time/timefmt.md) | RFC 3339, RFC 2822, HTTP dates, durations and your own patterns. |
+| [`std.tzdata`](./time/tzdata.md) | The IANA zone database, bundled for systems that have none. |
 
 ## System
 

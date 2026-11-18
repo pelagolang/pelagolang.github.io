@@ -114,4 +114,4 @@ fn main() -> void ! time_error {
 121643.5s
 ```
 
-Time zones, text formats and the zone database are the next pieces of the time library: see [Time](./time.md).
+A date has no zone. To see a moment on a wall clock in a place, use [Zones](./zone.md); to print and read dates, use [Text forms](./timefmt.md).
