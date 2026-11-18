@@ -3,7 +3,10 @@
   "pages": [
     "index",
     "time",
-    "calendar"
+    "calendar",
+    "zone",
+    "timefmt",
+    "tzdata"
   ],
   "defaultOpen": false
 }

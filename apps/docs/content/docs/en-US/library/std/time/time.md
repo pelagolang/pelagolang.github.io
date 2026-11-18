@@ -19,7 +19,7 @@ A `duration` is whole nanoseconds in an `int` (about 292 years either way). Arit
 
 | Function | Result | Notes |
 | --- | --- | --- |
-| `time.days(n)`, `time.hours(n)`, `time.minutes(n)`, `time.seconds(n)` | `duration` | A day is exactly 24 hours. Calendar days, which can be 23 or 25 hours long in a zone, come with time zones. |
+| `time.days(n)`, `time.hours(n)`, `time.minutes(n)`, `time.seconds(n)` | `duration` | A day is exactly 24 hours. Calendar days, which can be 23 or 25 hours long in a zone, come with [time zones](./zone.md). |
 | `time.millis(n)`, `time.micros(n)`, `time.nanos(n)` | `duration` | |
 | `time.fromSeconds(s)` | `duration ! time_error` | From a `float` with a fraction; an error for NaN, infinity or a value out of range. |
 | `time.zero()`, `time.longest()`, `time.shortest()` | `duration` | |
@@ -185,10 +185,53 @@ The clocks work on Linux (x86-64 and AArch64), Windows (x86-64 and ARM64) and ma
 
 `select` can use a duration as a time limit: see [Concurrency](../../../guide/concurrency.md).
 
+## Timers and deadlines
+
+Timers keep a fixed rhythm: they measure from an instant, not from when the last piece of work finished, so the time the work took does not add up. All of them can fail with `io_error` where the clock does.
+
+| Function | Result | Notes |
+| --- | --- | --- |
+| `time.deadline(d)` | `instant ! io_error` | The instant `d` from now. |
+| `time.sleepUntil(instant)` | `void ! io_error` | Pauses the task until then; returns at once when it has passed. Other tasks keep running. |
+| `instant.hasPassed()` | `bool ! io_error` | Whether the instant is now or in the past. |
+| `time.startStopwatch()` | `stopwatch ! io_error` | A stopwatch started now. |
+| `time.ticker(period)` | `receiver<instant> ! io_error` | A receiver that gets the instant of each tick; `period` must be positive. |
+
+A `stopwatch` has `elapsed()` (time since it started), `lap!()` (time since the last lap, and starts the next one) and `restart!()`.
+
+A ticker's ticks keep their rhythm: the next is `period` after the last was *due*, not after it was received. When the receiver is slow the ticks it missed are skipped, never queued. The ticker stops when you drop the receiver. Use it in a `select` beside `case timeout(...)` (see [Concurrency](../../../guide/concurrency.md)).
+
+```pelago
+import std.time
+
+fn main() -> void ! io_error {
+    var watch = time.startStopwatch()?
+    const due = time.deadline(time.millis(30))?
+    print(due.hasPassed()?)
+    time.sleepUntil(due)?
+    print(due.hasPassed()?, (watch.elapsed()?) >= time.millis(30))
+    const lap = watch.lap!()?
+    print(lap >= time.millis(30), (watch.lap!()?) < time.millis(30))
+    const ticks = time.ticker(time.millis(10))?
+    var n = 0
+    while n < 3 {
+        const t = ticks.recv()
+        n += 1
+    }
+    print("ticks", n)
+}
+```
+
+```text
+false
+true true
+true true
+ticks 3
+```
+
 ## What is not there yet
 
-- **Zones and text forms.** A `moment` becomes a UTC date and time with [`std.calendar`](./calendar.md). Time zones (`std.zone`) and text forms (`std.timefmt`) are planned.
 - **Operators for scaling.** `d * 2` and `d / 2` are compile errors, because `duration` does not provide `mul` or `div`. Use `d.times(2)` and `d.divInt(2)`.
 - **Instants.** An `instant` has `==`, `<` and the rest, but no `print` and no `-`. Use `a.since(b)`.
-- **Timers and deadlines.** There is no timer or ticker type. For a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
+- **A timeout call.** There is no `time.timeout`: for a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
 - **Targets.** There is no sleep call on Windows yet (sleeping there waits by checking the clock).

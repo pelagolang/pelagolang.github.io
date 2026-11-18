@@ -14,7 +14,7 @@ The library has two parts.
 - [Ciphers and AEAD](./std/ciphers/index.md): Encryption, and authenticated encryption for messages.
 - [Random numbers](./std/random/index.md): Replayable generators for tests and games, and secure generators for secrets.
 - [Input, output and files](./std/io/index.md): Standard streams, files and paths.
-- [Time](./std/time/index.md): Clocks, durations and sleeping.
+- [Time](./std/time/index.md): Clocks, timers, the calendar, time zones and text forms.
 - [System](./std/system/index.md): The process and its surroundings.
 - [Text and data formats](./std/data/index.md): Parsing and writing text formats, and pattern matching.
 - [Math](./std/math/index.md): Numbers beyond the built-in types.
