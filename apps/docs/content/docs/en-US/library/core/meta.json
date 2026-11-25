@@ -7,7 +7,7 @@
     "collections",
     "wide-integers",
     "wide-floats",
-    "options-and-results",
+    "options",
     "math"
   ]
 }

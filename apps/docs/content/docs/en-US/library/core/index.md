@@ -15,7 +15,7 @@ If you are new to this reference, read [How to read this documentation](../index
 | Wide numbers (overviews) | `int128` to `uint256`, `float16`, `float128`, `float256` | [Wide integers](./wide-integers.md), [Wide and narrow floats](./wide-floats.md) |
 | Text | `string` and `str`, `chars`, splitting, searching, parsing | [Text](./text/index.md): [string](./text/string.md), [str](./text/str.md), [parsing](./text/parsing.md) |
 | Collections | `list<T>`, `iter<T>`, `map<K, V>`, `set<T>` | [Collections](./collections/index.md): [list](./collections/list.md), [iter](./collections/iter.md), [map](./collections/map.md), [set](./collections/set.md) |
-| Absence and failure | `T?` and `T ! E` | [Options and results](./options-and-results.md) |
+| Absence and failure | `T?` and `T ! E` | [Options and results](./options/index.md): [option](./options/option.md), [result](./options/result.md), [error types](./options/errors.md) |
 | Math | The `math` namespace | [Math](./math.md) |
 
 Not yet given their own pages (they exist in the source and are described inside the guide): braids (`core/braid.pel`), tasks and channels (`core/tasks.pel`), boxes, arenas and pools (`core/boxes.pel`, `core/arena.pel`, `core/pool.pel`), and the runtime support in `core/rt.pel`.
