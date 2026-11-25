@@ -52,7 +52,7 @@ The marketing site alone still deploys anywhere that serves static files; `verce
 
 ## Brand
 
-Colours: Pelago Teal `#0E7C86`, Lagoon `#5FD0C8`, Deep Sea `#0B2239`, Foam `#F4F6F8`. Wordmark outlined in the logo SVGs, text in Outfit. Rules: [`docs/design/brand.md`](https://github.com/pelagolang/pelago/blob/main/docs/design/brand.md).
+Colours: Pelago Teal `#0E7C86`, Lagoon `#5FD0C8`, Deep Sea `#0B2239`, Foam `#F4F6F8`. Wordmark outlined in the logo SVGs, text in Outfit. The brand record is kept in the private plans repo.
 
 ## Licence
 
