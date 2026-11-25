@@ -6,6 +6,8 @@ description: "list, iter, map and set: growable and keyed containers, and the la
 | Type | What it holds | Page |
 | --- | --- | --- |
 | `list<T>`, written `[T]` | A growable sequence, indexed from 0. | [list](./list.md) |
+| `[T; N]` | A fixed-size sequence stored inline; the size is part of the type. | [array](./array.md) |
+| `xs[a..b]` | A temporary window onto part of a list, array or text. | [slices](./slice.md) |
 | `iter<T>` | A lazy sequence: the result of `map`, `filter`, `split`, `chars` and the like. | [iter](./iter.md) |
 | `map<K, V>` | Keys with values, in insertion order. | [map](./map.md) |
 | `set<T>` | Unique values, in insertion order. | [set](./set.md) |
