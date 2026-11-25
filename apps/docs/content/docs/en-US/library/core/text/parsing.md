@@ -66,4 +66,4 @@ failed: bad digit at position 1
 
 ## Related
 
-[`str`](./str.md), [`int`](../primitives/int.md), [`float`](../primitives/float.md), [Options and results](../options-and-results.md)
+[`str`](./str.md), [`int`](../primitives/int.md), [`float`](../primitives/float.md), [Options and results](../options/index.md)
