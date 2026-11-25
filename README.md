@@ -46,7 +46,7 @@ CI builds the compiler, runs `pelago check content/code` and `node scripts/highl
 
 `.github/workflows/pages.yml` builds this site and the docs app (`apps/docs`), merges them into one folder and deploys it. The docs app owns the language folders (`/en-US/docs/`, `/es/docs/`, ...); this site owns everything else, and its Docs link points into the app. The workflow runs on every push to `main` and once a day, so the changelog stays current. Set **Settings, Pages, Source** to **GitHub Actions** once.
 
-On a project site the address is `https://<owner>.github.io/website/`, so both builds take the folder from `BASE_PATH` (the docs app reads it as `NEXT_PUBLIC_BASE_PATH`); `actions/configure-pages` supplies it, and it is empty once a custom domain is set. Canonical links, the sitemap and the Open Graph image use `SITE_URL` when set. To try it locally: `BASE_PATH=/website node scripts/build.mjs`.
+The site is served from the root of `https://pelagolang.github.io/` (this repo is the organisation's user site), so the base path is empty. Both builds still take the folder from `BASE_PATH` (the docs app reads it as `NEXT_PUBLIC_BASE_PATH`); `actions/configure-pages` supplies it, and it is empty once a custom domain is set. Canonical links, the sitemap and the Open Graph image use `SITE_URL` when set. To try a sub-folder build locally: `BASE_PATH=/preview node scripts/build.mjs`.
 
 The marketing site alone still deploys anywhere that serves static files; `vercel.json` is kept for that (leave `BASE_PATH` unset).
 

@@ -32,7 +32,7 @@ jobs:
           cache: npm
           cache-dependency-path: apps/docs/package-lock.json
 
-      # base_path is "/website" on a project site and empty with a custom domain; origin is the site's address.
+      # base_path is empty on a user site (this repo) and a custom domain, and the repo name on a project site; origin is the site's address.
       - name: Marketing site
         run: |
           node scripts/build.mjs
