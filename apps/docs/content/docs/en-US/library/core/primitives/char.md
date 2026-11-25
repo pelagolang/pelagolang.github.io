@@ -3,7 +3,7 @@ title: char
 description: "One Unicode scalar value: literals, escapes, the classification methods, conversions and what is ASCII-only."
 ---
 
-A `char` holds one Unicode scalar value: any code point from `U+0000` to `U+10FFFF` except the surrogate range. It is a single character, not a byte and not a string. The text type [`string`](../strings.md) is UTF-8, and `s.chars()` decodes it into `char` values.
+A `char` holds one Unicode scalar value: any code point from `U+0000` to `U+10FFFF` except the surrogate range. It is a single character, not a byte and not a string. The text type [`string`](../text/string.md) is UTF-8, and `s.chars()` decodes it into `char` values.
 
 ## Writing a value
 
@@ -89,6 +89,6 @@ Arithmetic on characters goes through `int`: `(c to int) + 1` is the code point 
 
 ## Related
 
-- [Strings](../strings.md): `chars()`, `padLeft`, and everything else that takes a `char`.
+- [`str`](../text/str.md): `chars()`, `padLeft`, and everything else that takes a `char`.
 - [`bool`](./bool.md), [`int`](./int.md)
 - [Lexical structure](../../../reference/lexical.md): the full escape table.
