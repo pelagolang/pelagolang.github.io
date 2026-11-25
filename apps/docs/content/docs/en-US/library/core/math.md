@@ -3,7 +3,7 @@ title: Math
 description: "The math namespace: min, max, clamp, sqrt, rounding, gcd, constants and float checks, always in scope."
 ---
 
-`math` is a namespace that is always in scope, with no import: `math.sqrt(x)`, `math.min(a, b)`, `math.pi`. The same operations stay available as methods (`x.sqrt()`, `a.min(b)`, see [Numbers](./numbers.md)); both spellings call the same code.
+`math` is a namespace that is always in scope, with no import: `math.sqrt(x)`, `math.min(a, b)`, `math.pi`. The same operations stay available as methods (`x.sqrt()`, `a.min(b)`, see [int](./primitives/int.md) and [float](./primitives/float.md)); both spellings call the same code.
 
 ```pelago
 fn main() {

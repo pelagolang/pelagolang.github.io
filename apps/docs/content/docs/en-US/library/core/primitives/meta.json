@@ -1,0 +1,4 @@
+{
+  "title": "Primitive types",
+  "pages": ["index", "bool", "char", "int", "float"]
+}
