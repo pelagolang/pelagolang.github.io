@@ -3,9 +3,8 @@
   "pages": [
     "index",
     "primitives",
-    "lists",
-    "maps-and-sets",
     "text",
+    "collections",
     "wide-integers",
     "wide-floats",
     "options-and-results",

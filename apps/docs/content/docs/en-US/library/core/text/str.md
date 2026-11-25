@@ -129,4 +129,4 @@ true ababab 007 7-- long
 
 ## Related
 
-[`string`](./string.md), [Parsing numbers](./parsing.md), [`char`](../primitives/char.md), [Lists](../lists.md) (`join`), [Iterators](../lists.md)
+[`string`](./string.md), [Parsing numbers](./parsing.md), [`char`](../primitives/char.md), [Lists](../collections/list.md), [Iterators](../collections/iter.md) (`join`)
