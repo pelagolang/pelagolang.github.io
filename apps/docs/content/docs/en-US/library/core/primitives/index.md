@@ -12,9 +12,13 @@ Each type has its own page: what it is, how a value is written, every operator a
 | `bool` | `true` or `false`. | [bool](./bool.md) |
 | `char` | One Unicode scalar value. | [char](./char.md) |
 | `int` | The default signed integer, 64 bits. | [int](./int.md) |
+| `int8`, `int16`, `int32` | Signed integers of a given width. | [int8](./int8.md), [int16](./int16.md), [int32](./int32.md) |
+| `int64` | Another name for `int`. | [int64](./int64.md) |
+| `uint8`, `uint16`, `uint32`, `uint64` | Unsigned integers of a given width. | [uint8](./uint8.md), [uint16](./uint16.md), [uint32](./uint32.md), [uint64](./uint64.md) |
+| `byte`, `uint` | Other names for `uint8` and `uint64`. | [byte](./byte.md), [uint](./uint.md) |
 | `float` | The default floating point number, 64 bits. | [float](./float.md) |
 
-The other integer and float widths (`int8` to `uint64`, `float32`, `float16`, `float128`, `float256`) and the wide integers (`int128` to `uint256`) are covered in [Wide integers](../wide-integers.md) and [Wide and narrow floats](../wide-floats.md) until they get pages of their own.
+The wide integers (`int128`, `uint128`, `int256`, `uint256`) and the other float formats (`float32`, `float16`, `float128`, `float256`) are covered in [Wide integers](../wide-integers.md) and [Wide and narrow floats](../wide-floats.md) until they get pages of their own.
 
 ## Rules every primitive shares
 
