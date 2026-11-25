@@ -1,9 +1,49 @@
 ---
 title: std
-description: "The modules you import, grouped by what they do."
+description: "The modules you import, grouped by what they do: how to use them, what is in scope without an import, and the conventions they share."
 ---
 
-`std` is a set of modules you import when you need them, for example `import std.fs`. They are grouped here by purpose; each group has its own overview.
+`std` is a set of modules you import when you need them, for example `import std.fs`. Everything in [`core`](../core/index.md) (the primitive types, lists, maps, text, options and results) is already in scope; `std` adds what needs the operating system or a larger algorithm.
+
+New to this reference? Start with [How to read this documentation](../index.md#how-to-read-this-documentation).
+
+## Using a module
+
+```pelago
+import std.path
+
+fn main() {
+    print(path.join("src", "main.pel"))
+}
+```
+
+```text
+src/main.pel
+```
+
+An `import` gives you the module's name as a namespace: `import std.fs` makes `fs.readText(...)` available. Only names the module declares `pub` can be used. Importing a module twice is harmless.
+
+## What is in scope without an import
+
+The "prelude" of Pelago is everything `core` declares `pub`:
+
+- the types `bool`, `char`, `int` and its widths, `float` and its widths, `string`, `str`, `list`, `map`, `set`, `range`, `box`, `iter` and the option and result forms `T?` and `T ! E`;
+- the interfaces `show`, `eq`, `order`, `hash`, `clone`, the operator interfaces and `converts`;
+- `parse_error`, `io_error`, `io_kind`;
+- `print`, `assert`, `panic`, `todo`, `unreachable`;
+- the `math` namespace.
+
+Nothing from `std` is in scope until you import it.
+
+## Conventions
+
+- **Failure.** A function that can fail for reasons outside your program (a missing file, bad input) returns a result, such as `string ! io_error`, and never stops the program. A function that can only fail because the caller broke a rule (an index out of range) stops the program. Each page says which.
+- **Streaming.** Hashes, MACs, ciphers and generators are values you create, feed and finish, and every module also has one-shot helpers for the common case.
+- **Bytes.** Binary data is `[uint8]` (`byte`). Text is `string` or `str`, and hex helpers live in `std.hash`.
+- **Names.** Functions are camelCase, types are lowercase, modules are one lowercase word. Modules sit in a flat namespace today (`std.sha2`); nested paths such as `std.collections.deque` are planned and the flat names will stay as aliases.
+- **Secrets.** Modules that handle keys say whether a comparison is constant time, and which algorithms are broken (`std.legacy`).
+
+The groups below match `pelago std`, which lists the same tree.
 
 ## Hashes and checksums
 
