@@ -2,5 +2,18 @@
   "title": "Language guide",
   "description": "The language, topic by topic",
   "root": true,
-  "pages": ["values", "functions", "types", "switch", "collections", "braids", "errors", "ownership", "concurrency", "modules", "comments"]
+  "pages": [
+    "values",
+    "control-flow",
+    "functions",
+    "types",
+    "switch",
+    "collections",
+    "braids",
+    "errors",
+    "ownership",
+    "concurrency",
+    "modules",
+    "comments"
+  ]
 }
