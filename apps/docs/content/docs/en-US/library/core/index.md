@@ -22,7 +22,7 @@ Not yet given their own pages (they exist in the source and are described inside
 
 ## Interfaces
 
-These interfaces are declared in `core` itself. Other types and the language use them.
+These interfaces are declared in `core` itself. Other types and the language use them. Each has its own page: [Interfaces](./interfaces/index.md).
 
 | Interface | Method | What it enables |
 | --- | --- | --- |

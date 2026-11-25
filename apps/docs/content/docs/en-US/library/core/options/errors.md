@@ -49,4 +49,4 @@ Any type can be an error type: a string, a struct, or an enum with data. Impleme
 
 ## Related
 
-[`result`](./result.md), [Interfaces](../index.md#interfaces), [`std.fs`](../../std/io/fs.md)
+[`result`](./result.md), [Interfaces](../interfaces/index.md), [`std.fs`](../../std/io/fs.md)
