@@ -5,7 +5,7 @@
     "primitives",
     "lists",
     "maps-and-sets",
-    "strings",
+    "text",
     "wide-integers",
     "wide-floats",
     "options-and-results",

@@ -11,9 +11,9 @@ If you are new to this reference, read [How to read this documentation](../index
 
 | Area | What is in it | Pages |
 | --- | --- | --- |
-| Primitive types | `bool`, `char`, `int`, `float` | [Primitive types](./primitives/index.md) |
-| Wide numbers | `int128`, `uint128`, `int256`, `uint256`, `float16`, `float128`, `float256` | [Wide integers](./wide-integers.md), [Wide and narrow floats](./wide-floats.md) |
-| Text | `string` and `str`, `chars`, splitting, searching, parsing | [Strings](./strings.md) |
+| Primitive types | `bool`, `char`, every integer and float width, one page each | [Primitive types](./primitives/index.md) |
+| Wide numbers (overviews) | `int128` to `uint256`, `float16`, `float128`, `float256` | [Wide integers](./wide-integers.md), [Wide and narrow floats](./wide-floats.md) |
+| Text | `string` and `str`, `chars`, splitting, searching, parsing | [Text](./text/index.md): [string](./text/string.md), [str](./text/str.md), [parsing](./text/parsing.md) |
 | Sequences | `list<T>` and the `iter<T>` adapters | [Lists](./lists.md) |
 | Keyed collections | `map<K, V>` and `set<T>` | [Maps and sets](./maps-and-sets.md) |
 | Absence and failure | `T?` and `T ! E` | [Options and results](./options-and-results.md) |
