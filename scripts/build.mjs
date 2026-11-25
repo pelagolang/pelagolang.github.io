@@ -14,7 +14,7 @@ const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, 
 let site = (process.env.SITE_URL || "").trim();
 if (!site && process.env.VERCEL_PROJECT_PRODUCTION_URL) site = `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
 site = site.replace(/\/$/, "");
-// BASE_PATH is the folder the site is served from ('/website' on a GitHub Pages project site; empty on a custom domain).
+// BASE_PATH is the folder the site is served from (empty on a user or custom-domain site, a sub-folder on a project site).
 const base = (process.env.BASE_PATH || "").trim().replace(/\/$/, "");
 
 const layout = read("src", "layout.html");
