@@ -11,7 +11,7 @@ description: "The growable sequence list<T>, written [T]: literals, indexing and
 
 ## Indexing and slicing
 
-`xs[i]` is the element at `i`. `xs[a..b]`, `xs[a..]`, `xs[..b]` and `xs[a..=b]` are slices, returned as new lists.
+`xs[i]` is the element at `i`. `xs[a..b]`, `xs[a..]`, `xs[..b]` and `xs[a..=b]` are [slices](./slice.md): temporary windows onto the list, not copies. Use `copy xs[a..b]` for an owned list.
 
 ```pelago
 fn main() {
