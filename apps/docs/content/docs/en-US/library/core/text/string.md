@@ -119,4 +119,4 @@ a, b, c x+y+z
 
 ## Related
 
-[`str`](./str.md), [Parsing numbers](./parsing.md), [`char`](../primitives/char.md), [Lists](../lists.md)
+[`str`](./str.md), [Parsing numbers](./parsing.md), [`char`](../primitives/char.md), [Lists](../collections/list.md)
