@@ -9,6 +9,43 @@ description: "The growable sequence list<T>, written [T]: literals, indexing and
 
 `[1, 2, 3]` is a list literal, `[]` an empty one (its type comes from context: `const xs: [int] = []`), and `list<int>` is the long spelling of `[int]`.
 
+### Repeating a value: `[value; n]`
+
+`[value; n]` repeats one value `n` times. What it makes depends on `n`:
+
+- A count known when the program is compiled (a literal or a `const`) makes a fixed [array](./array.md), `[T; N]`.
+- Any other count, such as a function result or a parameter, makes a list of `n` **independent copies**: changing one element never changes another, even when the element is a string, a struct or a list.
+
+```pelago
+struct pt { x: int, y: int }
+
+fn count() -> int = 3
+
+fn main() {
+    const n = count()
+    var flags = [false; n]
+    flags[1] = true
+    print(flags)
+    var points = [pt { x: 1, y: 2 }; n]
+    points[1].x = 9
+    print(points[0].x, points[1].x)
+    var grid = [[1, 2]; n]
+    grid[0][0] = 7
+    print(grid)
+    var empty = [0; n - 3]
+    print(empty.len())
+}
+```
+
+```text
+[false, true, false]
+1 9
+[[7, 2], [1, 2], [1, 2]]
+0
+```
+
+A count of 0 gives an empty list that owns nothing. A negative count stops with `stopped: negative list length`. A count whose elements could never fit (more than 2^40 bytes in total, 1 TiB) stops with `stopped: list length too large`, before any memory is requested.
+
 ## Indexing and slicing
 
 `xs[i]` is the element at `i`. `xs[a..b]`, `xs[a..]`, `xs[..b]` and `xs[a..=b]` are [slices](./slice.md): temporary windows onto the list, not copies. Use `copy xs[a..b]` for an owned list.
@@ -181,6 +218,7 @@ fn main() {
 ## Edge cases
 
 - `pop!` and `get` on an empty list give `none`; `xs[0]`, `remove!(0)` stop.
+- `[v; n]` with a negative `n` stops with `negative list length`; an enormous `n` stops with `list length too large`.
 - `chunks(0)` stops; `truncate!(n)` with `n >= len()` does nothing.
 - `binarySearch` on an unsorted list returns some position or `none`, never an error.
 

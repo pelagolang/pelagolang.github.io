@@ -33,7 +33,7 @@ false
 
 Methods that change the list end in `!` at the call, such as `push!`, `pop!`, `insert!`, `remove!`, `sort!` and `reverse!`. Methods that only read have no mark. `first()`, `last()`, `get(i)` and `pop!()` return an option, because the list may be empty.
 
-`[0; 4]` makes a list of four zeros.
+`[0; 4]` with a count known at compile time makes a fixed-size [array](../library/core/collections/array.md), `[int; 4]`. With a count only known at run time, `[0; n]` makes a list of `n` independent copies; a negative `n` stops the program. See [Repeating a value](../library/core/collections/list.md#repeating-a-value-value-n).
 
 ### Slices
 
