@@ -37,7 +37,7 @@ A literal with the wrong number of items is a compile error: `this array has 2 i
 
 ## Indexing and slicing
 
-`a[i]` reads and `a[i] = v` writes. An index outside `0..N` stops the program with `stopped: index out of range`. The compiler does not reject a constant index such as `a[3]` on a 3-array; it stops when it runs. `a[1..3]` is a [slice](./slice.md), but slicing an array stops with `not lowered yet: slicing this type` until a pending compiler change lands; slice a list instead.
+`a[i]` reads and `a[i] = v` writes. An index outside `0..N` stops the program with `stopped: index out of range`. The compiler does not reject a constant index such as `a[3]` on a 3-array; it stops when it runs. `a[1..3]` is a [window](./slice.md) onto part of the array, and can be passed to a `[T..]` parameter, read or changed like a window of a list.
 
 ## Copying and passing
 
