@@ -38,6 +38,27 @@ true
 
 `@derive(order)` compares the fields in order, first to last.
 
+## Calling it as a method
+
+`a.cmp(b)` returns a negative number, zero or a positive number for any type that provides `order`: numbers, text, lists, derived or hand-written structs and `obj`s, and generic values bounded by `T: order`. Use it when you want the three-way result in one call instead of `<` and `>`.
+
+```pelago
+@derive(order)
+obj point {
+    x: int
+    y: int
+}
+
+fn main() {
+    const a = point { x: 1, y: 2 }
+    print(a.cmp(point { x: 1, y: 3 }), 5.cmp(5), "b".cmp("a"), [1, 2].cmp([1, 3]))
+}
+```
+
+```text
+-1 0 1 -1
+```
+
 ## Edge cases
 
 - Without it, `a < b` on a struct is the error ```a` cannot be ordered with `<`: it does not provide `order`; write `@derive(order)` on `a` or `impl order for a` ``.

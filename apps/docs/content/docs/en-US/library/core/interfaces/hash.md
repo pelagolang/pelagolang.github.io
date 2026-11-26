@@ -55,6 +55,30 @@ true false 1
 
 Hashing a `float` key is not meaningful because of NaN.
 
+## Calling it as a method
+
+`v.hash()` gives the hash of any value whose type provides `hash`: numbers, text, lists, derived structs and `obj`s, and values of a type `T: hash`. Equal values give equal hashes. The number itself is not specified, so compare hashes with each other and never store them or print them as data.
+
+```pelago
+@derive(eq, hash)
+obj point {
+    x: int
+    y: int
+}
+
+fn digest<T: hash>(v: T) -> int = v.hash()
+
+fn main() {
+    const a = point { x: 1, y: 2 }
+    const b = point { x: 1, y: 2 }
+    print(a.hash() == b.hash(), digest("a") == digest("a"), digest(5) == digest(6))
+}
+```
+
+```text
+true true false
+```
+
 ## Related
 
 [Interfaces](./index.md), [`eq`](./eq.md), [`std.hash`](../../std/hashes/hash.md) and [`std.fasthash`](../../std/hashes/fasthash.md) for hash functions over bytes

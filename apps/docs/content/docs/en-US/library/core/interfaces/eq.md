@@ -40,6 +40,31 @@ true false
 
 `@derive(eq)` writes the comparison for an `obj`, field by field, including nested lists, options and base-class fields.
 
+## Calling it as a method
+
+`a.eq(b)` calls the comparison directly on any type that provides `eq`: numbers, `bool`, text, lists, structs and enums, and derived or hand-written `obj`s. It gives the same answer as `==`, and it also works on a value of a generic type with a bound, `T: eq`.
+
+```pelago
+@derive(eq)
+obj point {
+    x: int
+    y: int
+}
+
+fn same<T: eq>(a: T, b: T) -> bool = a.eq(b)
+
+fn main() {
+    const a = point { x: 1, y: 2 }
+    print(a.eq(point { x: 1, y: 2 }), 3.eq(4), [1, 2].eq([1, 2]))
+    print(same("x", "x"), same(4, 5))
+}
+```
+
+```text
+true false true
+true false
+```
+
 ## Related
 
 [Interfaces](./index.md), [`order`](./order.md), [`hash`](./hash.md)
