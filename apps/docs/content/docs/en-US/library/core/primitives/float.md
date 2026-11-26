@@ -111,7 +111,23 @@ bad number
 
 ## Text form
 
-A float prints with up to **six decimals** and no trailing zeros: `3.14`, `100`, `0.3`. A value of 9e18 or more prints as `9223372036854775807` (with a minus sign when negative), including infinities, and a magnitude below `0.0000005` prints as `0`. NaN prints as `nan`. Exponent notation is not produced. Use this form for display only; it is not a round-trip format.
+A float prints as the **shortest text that reads back as the same value**: `3.14`, `100`, `0.1`, and `0.30000000000000004` for the sum `0.1 + 0.2`. There are no trailing zeros, and a whole number has no point (`100`, not `100.0`).
+
+- Plain digits are used while the decimal exponent is between -7 and 20: `1000000000000000`, `100000000000000000000`, `0.00001`, `0.0001`. Outside that range the text uses exponent form: `1e+21`, `1.7976931348623157e+308`, `1e-7`, `5e-324`.
+- Infinity prints as `inf` or `-inf`, NaN as `nan`, and negative zero as `-0`.
+- Every finite value survives `print` followed by `parseFloat`, so the text is safe to store.
+
+```pelago
+fn main() {
+    print(0.1 + 0.2, 1e20, 1e21, 1e-6, 1e-7, -0.0)
+    print(1.0 / 0.0, -1.0 / 0.0, 0.0 / 0.0)
+}
+```
+
+```text
+0.30000000000000004 100000000000000000000 1e+21 1e-6 1e-7 -0
+inf -inf nan
+```
 
 ## Edge cases
 
@@ -124,7 +140,6 @@ A float prints with up to **six decimals** and no trailing zeros: `3.14`, `100`,
 
 - `**` on floats is accepted by the checker but not lowered.
 - No `sin`, `cos`, `exp`, `ln` and the like yet in `core`; see [Math](../math.md) for what exists.
-- Shortest round-trip text form and exponent notation.
 
 ## Related
 
