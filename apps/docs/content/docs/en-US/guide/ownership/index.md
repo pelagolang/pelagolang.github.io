@@ -24,7 +24,7 @@ Pelago has no garbage collector and no borrow checker. Every value has exactly o
 4. References exist only for the length of a call or statement. They cannot be stored, returned or captured, which is why there are no lifetime annotations.
 5. A value is released when its owner goes out of scope, running its `deinit` if it has one. Nothing else frees memory.
 
-Because two names never share one mutable value, a function cannot change your data behind your back, and tasks cannot race on it. See [Concurrency](../concurrency.md).
+Because two names never share one mutable value, a function cannot change your data behind your back, and tasks cannot race on it. See [Concurrency](../concurrency/index.md).
 
 ## Where this shows up elsewhere
 

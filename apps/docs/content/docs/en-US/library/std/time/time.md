@@ -183,7 +183,7 @@ The clocks work on Linux (x86-64 and AArch64), Windows (x86-64 and ARM64) and ma
 
 `sleep` asks the kernel to pause when every task is waiting, so it costs no processor time on Linux, macOS and Windows.
 
-`select` can use a duration as a time limit: see [Concurrency](../../../guide/concurrency.md).
+`select` can use a duration as a time limit: see [Concurrency](../../../guide/concurrency/index.md).
 
 ## Timers and deadlines
 
@@ -199,7 +199,7 @@ Timers keep a fixed rhythm: they measure from an instant, not from when the last
 
 A `stopwatch` has `elapsed()` (time since it started), `lap!()` (time since the last lap, and starts the next one) and `restart!()`.
 
-A ticker's ticks keep their rhythm: the next is `period` after the last was *due*, not after it was received. When the receiver is slow the ticks it missed are skipped, never queued. The ticker stops when you drop the receiver. Use it in a `select` beside `case timeout(...)` (see [Concurrency](../../../guide/concurrency.md)).
+A ticker's ticks keep their rhythm: the next is `period` after the last was *due*, not after it was received. When the receiver is slow the ticks it missed are skipped, never queued. The ticker stops when you drop the receiver. Use it in a `select` beside `case timeout(...)` (see [Concurrency](../../../guide/concurrency/index.md)).
 
 ```pelago
 import std.time
@@ -233,4 +233,4 @@ ticks 3
 
 - **Operators for scaling.** `d * 2` and `d / 2` are compile errors, because `duration` does not provide `mul` or `div`. Use `d.times(2)` and `d.divInt(2)`.
 - **Instants.** An `instant` has `==`, `<` and the rest, but no `print` and no `-`. Use `a.since(b)`.
-- **A timeout call.** There is no `time.timeout`: for a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
+- **A timeout call.** There is no `time.timeout`: for a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency/index.md)).
