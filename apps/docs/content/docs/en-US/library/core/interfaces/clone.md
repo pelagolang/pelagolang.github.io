@@ -30,9 +30,7 @@ fn main() {
 1 4
 ```
 
-## Not finished
-
-`@derive(clone)` on an `obj` compiles but stops with `invalid memory access` when `copy` runs. Write the `impl` instead.
+`@derive(clone)` writes it for you, including nested list, option and base-class fields.
 
 ## Related
 

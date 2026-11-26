@@ -126,6 +126,8 @@ When the types should take turns in a fixed-size run, such as `(int, string; 4)`
 
 ## Conditions
 
+Each of these has its own page in [Control flow](./control-flow/index.md).
+
 `if` is an expression, so it can produce a value. The conditional operator `? :` is the short form. `unless` is `if` with the condition reversed.
 
 ```pelago

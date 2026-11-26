@@ -25,9 +25,9 @@ fn main() {
 ```
 
 ```text
-3.1 0.3 0.428571 true
+3.1 0.3 0.42857143 true
 16777216
-0.1 true
+0.10000000149011612 true
 ```
 
 ## Methods
@@ -36,7 +36,7 @@ fn main() {
 
 ## Text form
 
-A `float32` prints with the same limited text form as [`float`](./float.md#text-form): up to six decimals, no exponent, infinities as `9223372036854775807`. Use it for display only.
+A `float32` prints as the shortest text that reads back as the same `float32` value, in the same form as [`float`](./float.md#text-form): `0.1`, `0.42857143`, `3.4028235e+38`, `inf`, `nan`. Converting to `float` first shows the exact widened value: `0.10000000149011612`.
 
 ## Converting
 
