@@ -95,7 +95,16 @@ fn main() {
 | `toArray()` | An array, when all slots have one type. |
 | `asPairs()`, `asSlots()` | Convert between `(A, B; 2N)` and `[(A, B); N]` (copies). |
 
-For a cycle of three types the methods are `first`, `second` and `third`, with `rounds` and `asRounds` in place of `pairs` and `asPairs`.
+For a cycle of three types the methods are `first`, `second` and `third`, with `rounds` and `asRounds` in place of `pairs` and `asPairs`. Cycles of four, five and six types work the same way, with `fourth`, `fifth` and `sixth`, a strand view for each slot (`fourthStrand`, `fourthStrandMut`) and `asRounds` for an array of four-, five- or six-slot rounds.
+
+```pelago
+fn main() {
+    const a: (int, string, bool, float; 9) = (1, "a", true, 1.5, 2, "b", false, 2.5, 3)
+    print(a.rounds())                /// 2
+    print(a.fourth(1))               /// 2.5
+    print(a.firstStrand().toList())  /// [1, 2, 3]
+}
+```
 
 ## Strand views
 
@@ -131,4 +140,4 @@ With `@derive(fromJson)` and `@derive(toJson)`, a braid is one flat JSON array w
 
 ## Not available yet
 
-Cycles of four or more types have the type, literals and slot access but not the pair methods. There is no check yet against using a braid while a mutable strand of it is alive, so do not read the braid and write through a strand in the same statement.
+Cycles of seven or more types have the type, literals and slot access but not the round methods. There is no check yet against using a braid while a mutable strand of it is alive, so do not read the braid and write through a strand in the same statement.
