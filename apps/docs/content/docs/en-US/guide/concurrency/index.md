@@ -14,6 +14,7 @@ Concurrent code in Pelago builds on the [ownership rules](../ownership/index.md)
 | `select`, `timeout`, `time.sleep` | Wait for several things at once, or give up after a time. | [select and timeouts](./select.md) |
 | `lock`, `atomic`, `semaphore`, `barrier` | Share state safely when channels are not enough. | [Sharing state](./sharing.md) |
 | `async fn`, `await`, `blockOn` | A function that runs as a task and gives a future. | [Async functions](./async.md) |
+| `coroutine`, `emit` | A generator: a function that produces values one at a time. | [Coroutines](./coroutines.md) |
 | Stacks, ending the program, deadlocks | How the runtime runs tasks. | [The runtime](./runtime.md) |
 
 ## The model in four rules

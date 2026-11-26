@@ -78,6 +78,48 @@ some(1) none
 
 The first `recv` gives `some(1)`; once the only sender has ended, `recv` gives `none`.
 
+## Bounded channels
+
+`chan<T>()` has no limit: `send` always queues the value. `chan<T>(n)` holds at most `n` values, and `send` waits while that many are queued, which keeps a fast producer from running far ahead of a slow consumer.
+
+## tryRecv
+
+`rx.tryRecv()` takes a value if one is queued and returns `none` at once if not, without waiting:
+
+```pelago
+fn main() {
+    const (tx, rx) = chan<int>(2)
+    tx.send(1)
+    tx.send(2)
+    print(rx.tryRecv(), rx.tryRecv(), rx.tryRecv())
+}
+```
+
+```text
+some(1) some(2) none
+```
+
+## Sending to a gone receiver
+
+`send` returns `void ! closed`: it fails with `closed` when the receiver is gone, so the sender can stop instead of queueing values nobody will read.
+
+```pelago
+fn gone(sink r: receiver<int>) {{}}
+
+fn main() {
+    const (tx, rx) = chan<int>()
+    gone(sink rx)
+    switch tx.send(1) {
+        case ok(_): print("sent")
+        case err(_): print("closed")
+    }
+}
+```
+
+```text
+closed
+```
+
 ## Edge cases
 
 - A task that waits on a channel is parked, not polling; see [The runtime](./runtime.md).
