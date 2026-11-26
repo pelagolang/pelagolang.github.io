@@ -23,7 +23,7 @@ An interface lists methods a type can provide. `core` declares the ones the lang
 | `float` | yes | yes | yes | no meaningful | yes |
 | `list`, `map`, `set`, tuples | when elements are | when elements are | lists when elements are | no | yes |
 | `struct`, `enum` you write | **write `@derive(show)` or `impl show`** | automatic | `@derive(order)` or `impl order` | `impl hash` | automatic |
-| `obj` you write | same as struct | `@derive(eq)` or `impl eq` | `@derive(order)` or `impl order` | `impl hash` | `impl clone` |
+| `obj` you write | same as struct | `@derive(eq)` or `impl eq` | `@derive(order)` or `impl order` | `@derive(hash)` or `impl hash` | `@derive(clone)` or `impl clone` |
 
 ## Using an interface as a bound
 
