@@ -32,6 +32,8 @@ Arithmetic on every integer type is checked: a result that does not fit stops th
 | Tuple | `(int, string)` | A fixed group of values; fields are `t.0`, `t.1`. |
 | Braid | `(int, string; 4)` | A fixed-size run whose types repeat in a cycle. See [Braids](../guide/braids.mdx). |
 | List | `[int]` or `list<int>` | A growable sequence. |
+| Array | `[int; 4]` | Exactly `N` values stored inline. See [arrays](../library/core/collections/array.md). |
+| Window | `[int..]` or `slice<int>` | A borrowed part of a list or array; a parameter type only. It cannot grow, be stored or be returned. See [slices and windows](../library/core/collections/slice.md). |
 | Map | `map<string, int>` | Keys with values. |
 | Set | `set<int>` | Unique values. |
 | Range | `0..10` | A span of integers. |
