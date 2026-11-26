@@ -29,18 +29,20 @@ An optional sign (`+` or `-`) followed by decimal digits, and nothing else. No s
 
 ## Floats
 
-Decimal text with an optional sign, an optional fraction (`.5` and `5.` are fine) and an optional exponent (`e` or `E`). `inf` and `nan` are not accepted.
+Decimal text with an optional sign, an optional fraction (`.5` and `5.` are fine) and an optional exponent (`e` or `E`). The words `inf`, `-inf` and `nan` (lowercase only) are accepted, so every printed float reads back. A number beyond the range, such as `1e400`, gives an infinity rather than an error, and a value is rounded once to the nearest float.
 
 ```pelago
 fn main() {
     print("1.5".parseFloat(), ".5".parseFloat(), "5.".parseFloat(), "1e3".parseFloat())
     print("-1.5E-2".parseFloat(), "inf".parseFloat(), "1.2.3".parseFloat())
+    print("1e400".parseFloat(), "NaN".parseFloat(), "0x1".parseFloat())
 }
 ```
 
 ```text
 ok(1.5) ok(0.5) ok(5) ok(1000)
-ok(-0.015) err(bad number) err(bad number)
+ok(-0.015) ok(inf) err(bad number)
+ok(inf) err(bad number) err(bad number)
 ```
 
 ## Handling the result
