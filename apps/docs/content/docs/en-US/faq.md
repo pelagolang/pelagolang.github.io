@@ -9,7 +9,7 @@ Systems programming where you want native executables, predictable behaviour and
 
 ## How is memory managed without a garbage collector?
 
-Every value has one owner. A value is released when its owner goes out of scope, and passing it with `sink` or assigning it moves it to a new owner. There is no borrow checker to learn: references last only for a call or a statement. See [Ownership and memory](./guide/ownership.md).
+Every value has one owner. A value is released when its owner goes out of scope, and passing it with `sink` or assigning it moves it to a new owner. There is no borrow checker to learn: references last only for a call or a statement. See [Ownership and memory](./guide/ownership/index.md).
 
 ## Why do calls say `inout`, `sink` and `!`?
 

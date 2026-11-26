@@ -73,8 +73,8 @@ boom
 
 ## Typical use
 
-Pair acquiring with releasing: open a file, then `defer` the close on the next line, so every path out closes it. For values with a destructor, `deinit` does this automatically; see [Ownership](../ownership.md).
+Pair acquiring with releasing: open a file, then `defer` the close on the next line, so every path out closes it. For values with a destructor, `deinit` does this automatically; see [Ownership](../ownership/index.md).
 
 ## Related
 
-[Ownership](../ownership.md), [Errors](../errors.md), [Tail calls](./tail-calls.md)
+[Ownership](../ownership/index.md), [Errors](../errors.md), [Tail calls](./tail-calls.md)

@@ -7,7 +7,7 @@ This page explains the choices behind the language and what to expect from the c
 
 ## Principles
 
-**Values behave like values.** Two names never share a changeable value. You get a second one with `copy`, you hand one over with `sink`, and a function that may change your data says `inout` on the call. Programs are easier to reason about, and tasks cannot race on data they were not given. See [Ownership and memory](./guide/ownership.md).
+**Values behave like values.** Two names never share a changeable value. You get a second one with `copy`, you hand one over with `sink`, and a function that may change your data says `inout` on the call. Programs are easier to reason about, and tasks cannot race on data they were not given. See [Ownership and memory](./guide/ownership/index.md).
 
 **Cleanup is deterministic.** There is no garbage collector and no runtime to ship. A value is released when its owner leaves scope, `deinit` runs at that moment, and `defer` runs when its block ends.
 
