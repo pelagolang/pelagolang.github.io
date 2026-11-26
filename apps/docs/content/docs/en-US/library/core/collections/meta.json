@@ -1,4 +1,4 @@
 {
   "title": "Collections",
-  "pages": ["index", "list", "iter", "map", "set"]
+  "pages": ["index", "list", "array", "slice", "iter", "map", "set"]
 }
