@@ -32,4 +32,4 @@ You can list both sets with `pelago keywords`.
 
 ## Words that are not in Pelago
 
-Several familiar words are deliberately absent: `class`, `match`, `when`, `null`, `extern`, `comptime` and `inline` have no meaning, and there are no word operators such as `and`, `or` and `not`. Use `obj`, `switch`, `none`, `ext`, `meta` and the `@inline` attribute, and write `&&`, `||` and `!`.
+Several familiar words are deliberately absent: `class`, `match`, `when`, `null`, `extern`, `comptime` and `inline` have no meaning, and there are no word operators such as `and`, `or` and `not`. Use `obj`, `switch`, `none`, `ext`, `meta` and the `@inline_always` attribute, and write `&&`, `||` and `!`.
