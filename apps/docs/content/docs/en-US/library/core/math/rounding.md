@@ -29,7 +29,7 @@ fn main() {
 
 ## To an integer
 
-These return a `float`. To get an `int`, use the methods `truncInt`, `floorInt`, `ceilInt` and `roundInt` on the float; they stop for NaN, infinities and values outside the `int` range. See [float](../primitives/float.md#converting-to-and-from-other-types).
+These return a `float`. To get an `int`, use the methods `truncInt`, `floorInt`, `ceilInt` and `roundInt` on the float; they stop for NaN, infinities and values outside the `int` range. See [float](../primitives/float.md#converting).
 
 ## Edge cases
 
