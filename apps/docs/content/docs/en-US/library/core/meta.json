@@ -2,13 +2,13 @@
   "title": "Core types",
   "pages": [
     "index",
-    "lists",
-    "maps-and-sets",
-    "strings",
-    "numbers",
+    "primitives",
+    "text",
+    "collections",
     "wide-integers",
     "wide-floats",
-    "options-and-results",
+    "options",
+    "interfaces",
     "math"
   ]
 }

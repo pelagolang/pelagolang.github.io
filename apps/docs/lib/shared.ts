@@ -1,7 +1,7 @@
 import { createGetUrl } from 'fumadocs-core/source';
 import { i18n } from './i18n';
 
-// Set when the site is served below a path, as a GitHub Pages project site is (/website). Empty on a custom domain.
+// Set when the site is served below a path, as a GitHub Pages project site is. Empty on a user or custom-domain site.
 export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 export const appName = 'Pelago';
 export const docsRoute = '/docs';

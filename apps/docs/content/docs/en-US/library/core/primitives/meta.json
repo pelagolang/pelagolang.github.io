@@ -1,0 +1,28 @@
+{
+  "title": "Primitive types",
+  "pages": [
+    "index",
+    "bool",
+    "char",
+    "int",
+    "int8",
+    "int16",
+    "int32",
+    "int64",
+    "uint",
+    "uint8",
+    "byte",
+    "uint16",
+    "uint32",
+    "uint64",
+    "float",
+    "int128",
+    "uint128",
+    "int256",
+    "uint256",
+    "float32",
+    "float16",
+    "float128",
+    "float256"
+  ]
+}
