@@ -47,6 +47,23 @@ fn main() {
 true false 10 0
 ```
 
+## shared
+
+`shared(value)` holds data that is only **read** after it is built, counted across tasks. `copy handle` gives another handle, `get()` gives the value, and the data is released when the last handle goes away. Use it for configuration or a lookup table that many tasks read.
+
+```pelago
+fn main() {
+    const cfg = shared([1, 2, 3])
+    const c2 = copy cfg
+    const t = spawn([sink c2] ~> c2.get().len())
+    print(t.join!!(), cfg.get())
+}
+```
+
+```text
+3 [1, 2, 3]
+```
+
 ## semaphore and barrier
 
 `semaphore(n)` limits how many tasks do something at once: `acquire` waits for a permit and `release` returns one. `barrier(n)` holds tasks until all `n` have called `wait()`.

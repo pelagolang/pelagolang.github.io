@@ -1,4 +1,4 @@
 {
   "title": "Concurrency",
-  "pages": ["index", "tasks", "channels", "scopes", "cancellation", "select", "sharing", "async", "runtime"]
+  "pages": ["index", "tasks", "channels", "scopes", "cancellation", "select", "sharing", "async", "coroutines", "runtime"]
 }
