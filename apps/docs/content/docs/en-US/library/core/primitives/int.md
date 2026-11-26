@@ -22,8 +22,8 @@ Underscores may separate digits. A literal takes the integer type the context as
 
 | Operator | Result | Edge |
 | --- | --- | --- |
-| `a / b` | Truncates toward zero. `-7 / 2` is `-3`. | `b == 0` stops with `stopped: division by zero`. |
-| `a % b` | Remainder with the sign of `a`. `-7 % 3` is `-1`. | `b == 0` stops with `stopped: division by zero`. |
+| `a / b` | Truncates toward zero. `-7 / 2` is `-3`. | `b == 0` stops with `stopped: division by zero`; the smallest value divided by `-1` stops with `stopped: arithmetic overflow`. |
+| `a % b` | Remainder with the sign of `a`. `-7 % 3` is `-1`. | `b == 0` stops with `stopped: division by zero`; the smallest value `% -1` stops with `stopped: arithmetic overflow`. |
 | `a +% b`, `a -% b`, `a *% b` | Two's complement wrapping. | Never stops. For hashes and checksums. |
 | `a << n`, `a >> n` | Shift. `>>` is arithmetic on signed types. | `n` equal to or above the width stops with `stopped: shifted by the width or more`. |
 | `a & b`, `a \| b`, `a ^ b`, `~a` | Bitwise. | |
@@ -56,10 +56,6 @@ fn main() {
 ```text
 arithmetic overflow
 ```
-
-### Known gap
-
-`-9223372036854775808 / -1` does not stop the program; it yields `-9223372036854775808` on every backend. All other overflows are caught.
 
 ## Methods
 
@@ -169,7 +165,6 @@ The narrower types check their own range: `const a: int8 = 100` plus another `10
 - `**` is accepted by the checker and not lowered: use `pow`.
 - `pow` has no negative exponent and no overflow-reporting form; use `checkedMul` in a loop where you need `none`.
 - `MIN` and `MAX` constants, `toString` with a radix, and `divEuclid`-style helpers.
-- The `-9223372036854775808 / -1` gap above.
 
 ## Related
 
