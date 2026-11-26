@@ -13,8 +13,8 @@ Standard output is `print`, which is always available. `std.io` adds the other t
 | --- | --- | --- |
 | `io.eprint(text)` | | Write to standard error. |
 | `io.eprintln(text)` | | Write a line to standard error. |
-| `io.readAll()` | `string` | Read standard input until it ends. |
-| `io.readLine()` | `string?` | The next line, or `none` at the end of input. |
+| `io.readAll()` | `string ! io_error` | Read standard input until it ends; `invalidUtf8` when it is not text (use `io.readBytes()` for raw data). |
+| `io.readLine()` | `string? ! io_error` | The next line without its ending, `none` at the end of input, or the error that stopped the read (`invalidUtf8` for a line that is not text). |
 
 Standard output is flushed before anything is written to standard error, so the two streams appear in the order your program wrote them.
 
@@ -27,8 +27,10 @@ fn main() {
     var running = true
     while running {
         switch io.readLine() {
-            case some(_): lines++
-            case none: running = false
+            case ok(some(_)): lines++
+            case ok(none): running = false
+            case err(e): print(e)
+                running = false
         }
     }
     print("#lines lines")
