@@ -54,4 +54,4 @@ true
 
 ## Related
 
-[Types guide](../../../guide/types.md), [Generics](../../../guide/types.md#generics)
+[Types guide](../../../guide/types/index.md), [Generics](../../../guide/types/generics.md)
