@@ -68,7 +68,7 @@ failed: notFound
 | `fs.exists(path)` | `bool` | Whether the path exists. It never fails. |
 | `fs.metadata(path)` | `fs.file_info ! io_error` | A `size` in bytes and a `kind`: `fs.file_kind.file`, `dir` or `other`. A link is followed. |
 | `fs.createDir(path)` | `void ! io_error` | Make one folder. |
-| `fs.createDirs(path)` | `void ! io_error` | Make a folder and any missing parents. |
+| `fs.createDirs(path)` | `void ! io_error` | Make a folder and any missing parents. A folder that is already there, even one another process makes at the same moment, is not an error. |
 | `fs.removeFile(path)` | `void ! io_error` | Delete a file. |
 | `fs.removeDir(path)` | `void ! io_error` | Delete an empty folder. |
 | `fs.rename(from, to)` | `void ! io_error` | Move or rename. |

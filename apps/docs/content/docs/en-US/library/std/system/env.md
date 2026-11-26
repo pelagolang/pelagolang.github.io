@@ -15,6 +15,8 @@ import std.env
 
 The values are copies, so they stay valid for as long as the program runs.
 
+On Windows, variable names are compared ignoring ASCII case, as the system does (`env.get("Path")` finds `PATH`), and the hidden entries whose names start with `=` (the per-drive current directories) are not listed by `env.vars()`. On Linux and macOS names are compared exactly.
+
 ```pelago
 import std.env
 
