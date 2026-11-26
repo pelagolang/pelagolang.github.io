@@ -19,7 +19,7 @@ Environment variables are in [std.env](./env.md) and are a read-only snapshot ta
 | Item | Notes |
 | --- | --- |
 | `main(args: [string])` | `main` may declare a list of strings as its parameter. The first element is the program name. Works in the interpreter and on Linux, Windows and macOS builds. |
-| `os.exit(code)` | End the program at once with this status. Standard output is flushed, but `deinit` does not run. |
+| `os.exit(code)` | End the program at once with this status, `0` to `255`. Standard output is flushed, but `deinit` does not run. Any other value stops the program with the message `os.exit: the status must be 0 to 255`, because Linux and macOS would keep only the low byte (`os.exit(256)` would exit 0). |
 
 ```pelago exit
 import std.os
