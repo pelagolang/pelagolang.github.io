@@ -3,11 +3,11 @@ title: slices
 description: "xs[a..b] and s[a..b]: temporary windows onto part of a list, array or text, what they cost, what they may not do and what is not built yet."
 ---
 
-A slice is a window onto part of a list, an array or a piece of text. Nothing is copied: the window is a pointer and a length into the original. It lasts for one statement or one call.
+A slice is a window onto part of a list or a piece of text (arrays are not lowered yet). Nothing is copied: the window is a pointer and a length into the original. It lasts for one statement or one call.
 
 | Written | Of | Type | Copies? |
 | --- | --- | --- | --- |
-| `xs[a..b]`, `xs[a..]`, `xs[..b]`, `xs[a..=b]` | list or array | a read-only list view | no |
+| `xs[a..b]`, `xs[a..]`, `xs[..b]`, `xs[a..=b]` | list (arrays: not lowered yet) | a read-only list view | no |
 | `s[a..b]` and the other forms | `string` or `str` | `str` | no |
 | `copy xs[a..b]` | list or array | `[T]`, an owned list | yes |
 
