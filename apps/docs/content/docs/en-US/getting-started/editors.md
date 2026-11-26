@@ -19,9 +19,11 @@ code --install-extension pelagolang.pelago
 
 If `pelago` is not on your `PATH`, set **Pelago: Server Path** in the settings to the full path of the executable. To install a build by hand, download the `.vsix` from the [latest release](https://github.com/pelagolang/vscode-pelago/releases), open the `...` menu in the Extensions view and choose **Install from VSIX...**.
 
+The extension also recognises `pelago.yaml` and Islet's `islet.yaml`, `monorepo.yaml` and `islet.lock`: each gets its own file icon and light YAML colouring that uses your theme's colours. Snippets include `fn`, `struct`, `enum`, `switch`, `for`, `while`, `guard`, `defer`, `impl`, `import` and `braid`.
+
 ## Zed
 
-The extension is not in the Zed registry yet. Clone [zed-pelago](https://github.com/pelagolang/zed-pelago), open the command palette, run `zed: install dev extension` and choose the folder. Zed compiles the grammar itself, so Rust must be installed through rustup.
+The extension is not in the Zed registry yet (a search of the registry on 2026-11-25 found no Pelago entry). Clone [zed-pelago](https://github.com/pelagolang/zed-pelago), open the command palette, run `zed: install dev extension` and choose the folder. Zed compiles the grammar itself, so Rust must be installed through rustup.
 
 ## Neovim, Helix and others
 
