@@ -29,7 +29,7 @@ An optional sign (`+` or `-`) followed by decimal digits, and nothing else. No s
 
 ## Floats
 
-Decimal text with an optional sign, an optional fraction (`.5` and `5.` are fine) and an optional exponent (`e` or `E`). `inf` and `nan` are not accepted.
+Decimal text with an optional sign, an optional fraction (`.5` and `5.` are fine) and an optional exponent (`e` or `E`). The words `inf`, `infinity` and `nan` are accepted too, so `"inf".parseFloat()` is `ok(inf)`. The result is rounded once, correctly, so subnormal values such as `5e-324` and huge exponents read exactly.
 
 ```pelago
 fn main() {
@@ -40,7 +40,7 @@ fn main() {
 
 ```text
 ok(1.5) ok(0.5) ok(5) ok(1000)
-ok(-0.015) err(bad number) err(bad number)
+ok(-0.015) ok(inf) err(bad number)
 ```
 
 ## Handling the result

@@ -54,7 +54,7 @@ red [green] tag { c: green, n: 2 }
 
 - Inside `show`, a field of type `string` cannot be moved out of `self`; write `copy self.name` when you return it as the whole result.
 - `show` is for people; there is no round-trip guarantee. Use the [JSON](../../std/data/json-typed.md) support to encode data.
-- Floats print with up to six decimals; see [`float`](../primitives/float.md#text-form).
+- Floats print as the shortest text that reads back as the same value (`0.1`, `1e+300`, `inf`, `nan`); see [`float`](../primitives/float.md#text-form).
 
 ## Related
 

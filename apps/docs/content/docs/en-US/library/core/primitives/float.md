@@ -111,7 +111,16 @@ bad number
 
 ## Text form
 
-A float prints with up to **six decimals** and no trailing zeros: `3.14`, `100`, `0.3`. A value of 9e18 or more prints as `9223372036854775807` (with a minus sign when negative), including infinities, and a magnitude below `0.0000005` prints as `0`. NaN prints as `nan`. Exponent notation is not produced. Use this form for display only; it is not a round-trip format.
+A float prints as the **shortest decimal text that reads back as the same float**, the same on every backend and in the interpreter. `0.1` prints `0.1`, `0.1 + 0.2` prints `0.30000000000000004`, and a whole number has no `.0`: `3`, `100`.
+
+- Magnitudes from `1e-5` up to (but not including) `1e21` print in plain positional form: `0.00001`, `123456789012345680`.
+- Anything outside that range uses exponent form with a sign on the exponent: `1e+21`, `1e-6`, `1.7976931348623157e+308`, `5e-324` (the smallest subnormal).
+- Infinities print as `inf` and `-inf`, NaN prints as `nan`, and negative zero prints as `-0`.
+- A `float32` prints its own shortest text, so `0.1` stays `0.1` instead of showing the extra digits of the widened value.
+
+`parseFloat` reads the same forms (`1.5`, `-2e-3`, `+2.5`, `1e400`, `inf`, `-inf`, `nan`) and rounds once, correctly, so printing a float and parsing the text gives back the same float (NaN aside, which is never equal to itself).
+
+The digits come from an exact big-number algorithm (Steele and White, "Dragon4", with the shortest-output rule of Burger and Dybvig), not a table-driven one such as Ryu or Grisu: it is conventional, small in data, and shared with `float16`, `float128` and `float256`.
 
 ## Edge cases
 
