@@ -7,6 +7,15 @@ description: "The process: arguments and exit status."
 import std.os
 ```
 
+**This module is small on purpose for now.** `std.os` has one function, `os.exit`. The arguments come from the `main` parameter, not from a function. These are not available yet:
+
+- `os.args()` as a function, the process id, the current directory and changing it, the home and temporary directories, the executable path and the host name.
+- Platform constants such as the operating system, the architecture, the path separator and the line ending.
+- Signals, `abort`, exit-code constants and a typed OS error.
+- Running other programs (`std.process`: spawn, pipes, wait, kill).
+
+Environment variables are in [std.env](./env.md) and are a read-only snapshot taken at start-up.
+
 | Item | Notes |
 | --- | --- |
 | `main(args: [string])` | `main` may declare a list of strings as its parameter. The first element is the program name. Works in the interpreter and on Linux, Windows and macOS builds. |
