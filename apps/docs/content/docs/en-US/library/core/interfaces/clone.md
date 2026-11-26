@@ -34,4 +34,4 @@ fn main() {
 
 ## Related
 
-[Interfaces](./index.md), [Values and ownership](../../../guide/ownership.md)
+[Interfaces](./index.md), [Values and ownership](../../../guide/ownership/index.md)
