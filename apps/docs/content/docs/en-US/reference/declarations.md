@@ -53,4 +53,4 @@ import { name, name: alias, ... } = path
 pub import { name } = path
 ```
 
-See [Modules and imports](../guide/modules.md).
+See [Modules and imports](../guide/modules/index.md).
