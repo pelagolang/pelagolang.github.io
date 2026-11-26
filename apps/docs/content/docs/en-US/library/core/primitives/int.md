@@ -57,9 +57,9 @@ fn main() {
 arithmetic overflow
 ```
 
-### Known gap
+### Division of the smallest value
 
-`-9223372036854775808 / -1` does not stop the program; it yields `-9223372036854775808` on every backend. All other overflows are caught.
+`/` and `%` check one more case: `-9223372036854775807 - 1` divided by `-1` (or taken modulo `-1`) does not fit, so it stops with `arithmetic overflow` like any other overflow. The narrower signed types behave the same way (`int8` stops on `-128 / -1`). Division by zero stops with `division by zero`.
 
 ## Methods
 
