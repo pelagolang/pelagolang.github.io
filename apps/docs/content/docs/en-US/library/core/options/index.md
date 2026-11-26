@@ -11,4 +11,4 @@ Pelago has no `null` and no exceptions. Absence and failure are values:
 | `result<T, E>` | `T ! E` | A `T` made with `ok(x)`, or an error of type `E` made with `err(e)`. | [result](./result.md) |
 | `parse_error`, `io_error`, `io_kind`, `error` | | The error types `core` and `std` return. | [Error types](./errors.md) |
 
-The operators that work on them are in [Operators](../../../reference/operators.md): `??` (fallback), `??=`, `?.` (chaining) and `?` (unwrap or return the failure). The guide pages [Errors and options](../../../guide/errors.md) show how to design with them.
+The operators that work on them are in [Operators](../../../reference/operators/index.md): `??` (fallback), `??=`, `?.` (chaining) and `?` (unwrap or return the failure). The guide pages [Errors and options](../../../guide/errors.md) show how to design with them.

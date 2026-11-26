@@ -112,4 +112,4 @@ none some((5, "x"))
 
 ## Related
 
-[`result`](./result.md), [Errors and options (guide)](../../../guide/errors.md), [Operators](../../../reference/operators.md)
+[`result`](./result.md), [Errors and options (guide)](../../../guide/errors.md), [Operators](../../../reference/operators/index.md)
