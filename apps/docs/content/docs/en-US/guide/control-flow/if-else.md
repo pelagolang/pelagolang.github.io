@@ -41,7 +41,7 @@ big yes
 
 ## Testing a pattern with is
 
-`v is pattern` is a `bool` that also binds names for the block it guards. It works on options, results, enum cases and anything a [pattern](../switch.md#is-a-pattern-as-a-test) can match, and it combines with `&&`.
+`v is pattern` is a `bool` that also binds names for the block it guards. It works on options, results, enum cases and anything a [pattern](../switch/is.md) can match, and it combines with `&&`.
 
 ```pelago
 fn main() {
@@ -79,4 +79,4 @@ this has type `{integer}`, but `bool` is expected
 
 ## Related
 
-[unless](./unless.md), [guard](./guard.md), [Pattern matching](../switch.md), [`bool`](../../library/core/primitives/bool.md)
+[unless](./unless.md), [guard](./guard.md), [Pattern matching](../switch/index.md), [`bool`](../../library/core/primitives/bool.md)

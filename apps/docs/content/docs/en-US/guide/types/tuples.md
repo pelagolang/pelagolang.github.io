@@ -77,4 +77,4 @@ Use a tuple for a short-lived grouping, and a `struct` when the parts have names
 ## Related
 
 - [Braids](../braids.mdx): fixed-size sequences with alternating types, written `(int, string; 3)`.
-- [Structs](./struct.md), [Type aliases](./aliases.md), [Pattern matching](../switch.md)
+- [Structs](./struct.md), [Type aliases](./aliases.md), [Pattern matching](../switch/index.md)

@@ -52,4 +52,4 @@ A `guard` whose `else` block does not leave is accepted by the checker but stops
 
 ## Related
 
-[if and else](./if-else.md), [Pattern matching](../switch.md), [Errors and options](../errors.md)
+[if and else](./if-else.md), [Pattern matching](../switch/index.md), [Errors and options](../errors.md)
