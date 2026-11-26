@@ -181,7 +181,7 @@ true
 
 The clocks work on Linux (x86-64 and AArch64), Windows (x86-64 and ARM64) and macOS (AArch64).
 
-`sleep` asks the kernel to pause when every task is waiting, so it costs no processor time on Linux and macOS. Windows has no sleep call yet: there `sleep` still waits correctly, but by checking the clock again and again, so it uses a processor while it waits.
+`sleep` asks the kernel to pause when every task is waiting, so it costs no processor time on Linux, macOS and Windows.
 
 `select` can use a duration as a time limit: see [Concurrency](../../../guide/concurrency.md).
 
@@ -234,4 +234,3 @@ ticks 3
 - **Operators for scaling.** `d * 2` and `d / 2` are compile errors, because `duration` does not provide `mul` or `div`. Use `d.times(2)` and `d.divInt(2)`.
 - **Instants.** An `instant` has `==`, `<` and the rest, but no `print` and no `-`. Use `a.since(b)`.
 - **A timeout call.** There is no `time.timeout`: for a time limit use `select` with `case timeout(d)` (see [Concurrency](../../../guide/concurrency.md)).
-- **Targets.** There is no sleep call on Windows yet (sleeping there waits by checking the clock).
