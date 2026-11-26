@@ -30,7 +30,7 @@ A leading dot (`.circle`) asks the compiler to find the case in the expected enu
 
 ## Taking an enum apart
 
-Use `switch` with one `case` per variant, or `is` to test one. See [Pattern matching](../switch.md) for every pattern form.
+Use `switch` with one `case` per variant, or `is` to test one. See [Pattern matching](../switch/index.md) for every pattern form.
 
 ```pelago
 enum dir { north, south, east, west }
@@ -146,4 +146,4 @@ node(1, 2)
 
 ## Related
 
-- [Pattern matching](../switch.md), [Structs](./struct.md), [Options](../../library/core/options/option.md), [Results](../../library/core/options/result.md)
+- [Pattern matching](../switch/index.md), [Structs](./struct.md), [Options](../../library/core/options/option.md), [Results](../../library/core/options/result.md)

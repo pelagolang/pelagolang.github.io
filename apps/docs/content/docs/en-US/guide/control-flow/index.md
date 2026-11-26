@@ -16,6 +16,6 @@ description: "Choosing and repeating: if, unless, while, for, loop, break and co
 | `defer` | Run code when the scope ends. | [defer](./defer.md) |
 | `become` | A guaranteed tail call. | [Tail calls](./tail-calls.md) |
 
-Pattern matching with `switch` and `is` has its own chapter: [Pattern matching](../switch.md).
+Pattern matching with `switch` and `is` has its own chapter: [Pattern matching](../switch/index.md).
 
 Every condition must be a [`bool`](../../library/core/primitives/bool.md). There is no truthy or falsy value: `if n { ... }` with an `int` is an error.

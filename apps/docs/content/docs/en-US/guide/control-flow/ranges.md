@@ -60,7 +60,7 @@ fn main() {
 
 ## Membership
 
-`x in a..b` tests whether `x` lies in the range, for integers and other ordered types such as `char`. It is also what `switch` range patterns do ([Pattern matching](../switch.md#values-and-ranges)).
+`x in a..b` tests whether `x` lies in the range, for integers and other ordered types such as `char`. It is also what `switch` range patterns do ([Pattern matching](../switch/values.md)).
 
 ```pelago
 fn main() {
@@ -92,4 +92,4 @@ A range indexes a list or a string to take a part: `xs[1..3]`, `s[..2]`, `xs[2..
 
 ## Related
 
-[for](./for.md), [Pattern matching](../switch.md)
+[for](./for.md), [Pattern matching](../switch/index.md)

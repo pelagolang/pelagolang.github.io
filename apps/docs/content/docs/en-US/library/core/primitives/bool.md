@@ -95,5 +95,5 @@ true
 ## Related
 
 - [Operators](../../../reference/operators.md)
-- [Pattern matching](../../../guide/switch.md): `switch` can match `true` and `false` directly.
+- [Pattern matching](../../../guide/switch/index.md): `switch` can match `true` and `false` directly.
 - [`char`](./char.md), [`int`](./int.md)

@@ -1,0 +1,4 @@
+{
+  "title": "Pattern matching",
+  "pages": ["index", "values", "enums", "structs-tuples", "lists", "options-results", "guards-default", "is", "in-place"]
+}
