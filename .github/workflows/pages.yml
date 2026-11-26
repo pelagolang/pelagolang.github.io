@@ -15,8 +15,10 @@ permissions:
   pages: write
   id-token: write
 
+# Pull request builds get a group per PR. Deploys share one group, so a PR build can no longer replace a queued
+# deploy of main (a newer pending run cancels an older pending run in the same group).
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
   cancel-in-progress: false
 
 jobs:
