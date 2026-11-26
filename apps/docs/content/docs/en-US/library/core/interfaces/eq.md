@@ -33,14 +33,12 @@ fn main() {
 ```text
 true false
 true
-false true
+true false
 ```
 
 `!=` is the opposite of `eq`; you never write it. Lists, maps and sets compare by value; maps and sets ignore order.
 
-## Not finished
-
-`@derive(eq)` on an `obj` is accepted but not lowered yet (``not lowered yet: comparing this type``); write `impl eq`.
+`@derive(eq)` writes the comparison for an `obj`, field by field, including nested lists, options and base-class fields.
 
 ## Related
 
