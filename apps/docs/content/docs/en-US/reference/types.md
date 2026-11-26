@@ -50,7 +50,7 @@ A function without a result type returns nothing.
 
 ## Types you define
 
-`struct`, `enum`, `obj` and `interface` declare new types; see the [guide](../guide/types.md). A value of type `any shape` holds any type that implements the interface `shape`. Generic types and functions take type parameters in angle brackets, optionally bounded: `fn largest<T: order>(a: T, b: T) -> T`.
+`struct`, `enum`, `obj` and `interface` declare new types; see the [guide](../guide/types/index.md). A value of type `any shape` holds any type that implements the interface `shape`. Generic types and functions take type parameters in angle brackets, optionally bounded: `fn largest<T: order>(a: T, b: T) -> T`.
 
 Standard interfaces include `order` (comparison with `<`), `eq`, `show` (conversion to text), and the operator interfaces `add`, `sub`, `mul`, `div`, `rem` and `neg`, which a type implements to support the matching operator.
 

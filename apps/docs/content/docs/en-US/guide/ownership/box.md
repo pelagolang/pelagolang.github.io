@@ -72,4 +72,4 @@ Shared ownership with reference counting is not part of `core` today.
 
 ## Related
 
-- [Moves](./moves.md), [Cleanup](./cleanup.md), [Types](../types.md)
+- [Moves](./moves.md), [Cleanup](./cleanup.md), [Types](../types/index.md)
