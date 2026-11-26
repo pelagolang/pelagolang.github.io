@@ -70,4 +70,4 @@ An `int32` is `eq`, `order`, `hash` and `show`: it compares numerically, works a
 
 ## Related
 
-[`int`](./int.md), [Wide integers](../wide-integers.md), [Operators](../../../reference/operators.md)
+[`int`](./int.md), [Wide integers](../wide-integers.md), [Operators](../../../reference/operators/index.md)

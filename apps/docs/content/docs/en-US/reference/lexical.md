@@ -82,4 +82,4 @@ Ada has 3 letters, nested: Ada
 
 ## Punctuation
 
-Operators use the longest match, so `>>=` is one token. They are described in [Operators](./operators.md).
+Operators use the longest match, so `>>=` is one token. They are described in [Operators](./operators/index.md).

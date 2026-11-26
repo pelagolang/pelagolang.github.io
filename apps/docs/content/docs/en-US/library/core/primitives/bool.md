@@ -34,7 +34,7 @@ true 2
 | `a == b`, `a != b` | Equal, not equal. | |
 | `c ? x : y` | Choose `x` when `c` is `true`, otherwise `y`. | `c` must be a `bool`. |
 
-`&&` binds tighter than `||`, and both bind looser than comparisons, so `a < b && b < c` needs no parentheses. The full table is in [Operators](../../../reference/operators.md).
+`&&` binds tighter than `||`, and both bind looser than comparisons, so `a < b && b < c` needs no parentheses. The full table is in [Operators](../../../reference/operators/index.md).
 
 `bool` has no ordering: `true < false` is rejected with ``error: `bool` cannot be ordered with `<` ``. The bitwise operators `&`, `|` and `^` work on integers, not on `bool`; use `&&` and `||`.
 
@@ -94,6 +94,6 @@ true
 
 ## Related
 
-- [Operators](../../../reference/operators.md)
+- [Operators](../../../reference/operators/index.md)
 - [Pattern matching](../../../guide/switch/index.md): `switch` can match `true` and `false` directly.
 - [`char`](./char.md), [`int`](./int.md)

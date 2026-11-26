@@ -70,4 +70,4 @@ A `uint8` is `eq`, `order`, `hash` and `show`: it compares numerically, works as
 
 ## Related
 
-[`int`](./int.md), [Wide integers](../wide-integers.md), [Operators](../../../reference/operators.md)
+[`int`](./int.md), [Wide integers](../wide-integers.md), [Operators](../../../reference/operators/index.md)
