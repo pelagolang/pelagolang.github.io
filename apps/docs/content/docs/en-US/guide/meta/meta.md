@@ -119,7 +119,7 @@ fn main() {
 
 The note line (`note: meta: building`) is printed by the compiler before the program runs.
 
-- Compile-time code is limited to ten million steps. A loop that does not end stops the build with `compile-time code ran too long (more than 10000000 steps)`.
+- Compile-time code is limited to ten million steps. A loop that does not end stops the build with `compile-time code ran too long (more than 10000000 steps)`. [`@meta_limit(n)`](../attributes/meta-limit.md) on the `const` changes the budget.
 
 ## Not finished
 
