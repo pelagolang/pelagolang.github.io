@@ -7,7 +7,7 @@ The prelude is what every module sees without an import: the built-in types (`in
 
 Methods belong to their type and arrive with it; you do not import them separately. `xs.push!(1)` needs no import, and neither does `x.sqrt()`.
 
-`math` is also always in scope; see [Math](../../library/core/math.md).
+`math` is also always in scope; see [Math](../../library/core/math/index.md).
 
 ## Standard library modules are not in the prelude
 

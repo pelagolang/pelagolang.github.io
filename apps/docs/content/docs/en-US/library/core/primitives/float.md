@@ -139,9 +139,9 @@ inf -inf nan
 ## Not finished
 
 - `**` on floats is accepted by the checker but not lowered.
-- No `sin`, `cos`, `exp`, `ln` and the like yet in `core`; see [Math](../math.md) for what exists.
+- No `sin`, `cos`, `exp`, `ln` and the like yet in `core`; see [Math](../math/index.md) for what exists.
 
 ## Related
 
 - [Wide and narrow floats](../wide-floats.md): `float16`, `float32`, `float128`, `float256`.
-- [`int`](./int.md), [Math](../math.md)
+- [`int`](./int.md), [Math](../math/index.md)

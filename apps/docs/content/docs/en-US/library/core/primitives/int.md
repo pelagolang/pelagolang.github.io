@@ -169,5 +169,5 @@ The narrower types check their own range: `const a: int8 = 100` plus another `10
 ## Related
 
 - [Wide integers](../wide-integers.md), [`float`](./float.md), [`char`](./char.md)
-- [Math](../math.md): `math.min`, `math.clamp`, `math.gcd`, `math.isqrt`.
+- [Math](../math/index.md): `math.min`, `math.clamp`, `math.gcd`, `math.isqrt`.
 - [Operators](../../../reference/operators.md)

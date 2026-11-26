@@ -68,4 +68,4 @@ fn main() {
 
 ## Related
 
-[Interfaces](./index.md), [`list`](../collections/list.md) (`sort!`, `sortBy!`), [Math](../math.md) (`min`, `max`, `clamp`)
+[Interfaces](./index.md), [`list`](../collections/list.md) (`sort!`, `sortBy!`), [Math](../math/index.md) (`min`, `max`, `clamp`)

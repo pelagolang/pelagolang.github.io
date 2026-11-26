@@ -1,0 +1,4 @@
+{
+  "title": "math",
+  "pages": ["index", "constants", "minmax", "rounding", "roots", "checks", "numbertheory"]
+}
