@@ -22,7 +22,7 @@ fn name(parameters) -> result = expression
 
 Parameters are `name: type`, optionally preceded by `inout` or `sink`, optionally followed by `= default`. A final `...name: type` collects the remaining arguments. A result type may be a plain type, `T?`, `T ! E`, or absent. The body's last expression is its value. A function that must not return has the type `never`.
 
-Attributes go before a declaration: `@inline fn square(x: int) -> int = x * x` asks for inlining.
+Attributes go before a declaration: `@inline_always fn square(x: int) -> int = x * x` asks for inlining. See [Attributes](../guide/attributes/index.md).
 
 ## Structs, enums and interfaces
 
